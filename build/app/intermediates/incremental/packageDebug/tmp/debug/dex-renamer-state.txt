@@ -1,4 +1,4 @@
-#Sun Apr 10 23:08:10 ICT 2022
-base.0=/Users/sorener/Documents/GitHub/instagram-flutter/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Mon Apr 11 02:25:36 ICT 2022
+base.0=C\:\\Users\\Snape\\Desktop\\instagram-flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
