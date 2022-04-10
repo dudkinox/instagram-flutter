@@ -2,7 +2,6 @@ import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key? key}) : super(key: key);
@@ -14,11 +13,6 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   static const TAG = 'SignUpPage';
   ResultFuture<bool>? singingFuture;
-  final ImagePicker _picker = ImagePicker();
-
-  void onImageButtonPressed() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-  }
   @override
   Widget build(BuildContext context) {
     final inputBorder =
@@ -42,21 +36,14 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 32,
                   ),
                   SizedBox(
-                    height: 64,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                    },
-                    icon: Image.asset('assets/images/profile-img.png'),
-                    iconSize: 150,
-                    padding: EdgeInsets.zero,
+                    height: 32,
                   ),
                   Text(
-                    'Upload a profile picture',
-                    style: Theme.of(context).textTheme.subtitle1,
+                    'Register',
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   SizedBox(
-                    height: 32,
+                    height: 64,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
