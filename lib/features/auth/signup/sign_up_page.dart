@@ -50,7 +50,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       var image = await ImagePicker().getImage(
                         source: ImageSource.gallery,
                       );
-                      print(image);
                     },
                     icon: Image.asset('assets/images/profile-img.png'),
                     iconSize: 150,
