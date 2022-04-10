@@ -2,7 +2,6 @@ import 'dart:developer' as developer;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:instagramflutter/app_context.dart';
 
 class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   static const TAG = 'AppBarAccount';
@@ -13,8 +12,10 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   AppBarAccountDelegate(this.topPadding, this.onShowMenu);
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    developer.log('build [$context, $shrinkOffset, $overlapsContent]', name: TAG);
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    developer.log('build [$context, $shrinkOffset, $overlapsContent]',
+        name: TAG);
     return Material(
       color: Theme.of(context).primaryColor,
       child: Container(
@@ -24,25 +25,29 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 12
-              ),
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
               child: Row(
                 children: <Widget>[
-                  Text('dangngocduc', style: Theme.of(context).primaryTextTheme.subtitle2,),
-                  Icon(Icons.keyboard_arrow_down, size: 16,)
+                  Text(
+                    'dangngocduc',
+                    style: Theme.of(context).primaryTextTheme.subtitle2,
+                  ),
+                  Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 16,
+                  )
                 ],
               ),
             ),
             IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: onShowMenu,
+              icon: Icon(Icons.menu),
+              onPressed: onShowMenu,
             )
           ],
         ),
       ),
-      elevation: (overlapsContent || (shrinkOffset > maxExtent - minExtent)) ? 4: 0,
+      elevation:
+          (overlapsContent || (shrinkOffset > maxExtent - minExtent)) ? 4 : 0,
     );
   }
 
@@ -56,6 +61,4 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
     return true;
   }
-
-
 }

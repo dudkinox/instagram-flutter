@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../Controllers/SignInController.dart';
 import '../../../components/Loading.dart';
-import 'package:instagramflutter/data/bloc/auth_bloc.dart';
-import 'package:instagramflutter/features/auth/signup/sign_up_page.dart';
 import 'package:provider/provider.dart';
+
+import '../signup/sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
   static const ROUTE_NAME = 'SignInPage';

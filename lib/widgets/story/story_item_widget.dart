@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
-import 'package:instagramflutter/features/story/story_page.dart';
+import '../../features/story/story_page.dart';
 
 class StoryItemWidget extends StatefulWidget {
   static const ROUTE_NAME = 'StoryItemWidget';
@@ -31,14 +31,13 @@ class _StoryItemWidgetState extends State<StoryItemWidget> {
                         Container(
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [Colors.red[500]!, Colors.pink],
-                              )
-                          ),
+                            colors: [Colors.red[500]!, Colors.pink],
+                          )),
                           padding: EdgeInsets.all(2),
                           child: CircleAvatar(
                               radius: 34,
-                              backgroundImage : AssetImage('assets/sample/ic_avatar_1.jpg')
-                          ),
+                              backgroundImage:
+                                  AssetImage('assets/sample/ic_avatar_1.jpg')),
                         )
                       ],
                     ),
@@ -47,9 +46,11 @@ class _StoryItemWidgetState extends State<StoryItemWidget> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 4),
-                child: Text('dangngocduc', style: Theme.of(context).textTheme.caption?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground
-                ),),
+                child: Text(
+                  'dangngocduc',
+                  style: Theme.of(context).textTheme.caption?.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground),
+                ),
               )
             ],
           ),
@@ -58,7 +59,7 @@ class _StoryItemWidgetState extends State<StoryItemWidget> {
       ),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => StoryPage(),
+          builder: (context) => StoryPage(),
         ));
       },
     );

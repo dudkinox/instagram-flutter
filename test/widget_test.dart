@@ -7,14 +7,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:instagramflutter/application.dart';
+import 'package:instagream/application.dart';
 
-import 'package:instagramflutter/main.dart';
+import 'package:instagream/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(Application());
+    await tester.pumpWidget(const Application());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

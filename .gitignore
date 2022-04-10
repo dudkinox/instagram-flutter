@@ -1,27 +1,46 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
 
-.dart_tool/flutter_build/e0b240d269d5c437e76cd7a63e6a2d6a/.filecache
-.dart_tool/flutter_build/e0b240d269d5c437e76cd7a63e6a2d6a/app.dill
-*.stamp
-*.d
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
-build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin
-build/app/intermediates/flutter/debug/flutter_build.d
-build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt
-build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin
-build/app/outputs/apk/debug/app-debug.apk
-build/app/outputs/flutter-apk/app-debug.apk
-build/app/outputs/flutter-apk/app.apk
-build/app/outputs/flutter-apk/app.apk.sha1
-build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill
-.flutter-plugins-dependencies
-.dart_tool/flutter_build/e0b240d269d5c437e76cd7a63e6a2d6a/.filecache
-.dart_tool/flutter_build/e0b240d269d5c437e76cd7a63e6a2d6a/app.dill
-.dart_tool/flutter_build/e0b240d269d5c437e76cd7a63e6a2d6a/debug_android_application.stamp
-.dart_tool/flutter_build/e0b240d269d5c437e76cd7a63e6a2d6a/flutter_assets.d
-.flutter-plugins-dependencies
-build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin
-build/app/intermediates/flutter/debug/flutter_build.d
-build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt
-build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin
-build/app/outputs/apk/debug/app-debug.apk
-build/app/outputs/flutter-apk/app-debug.apk
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release

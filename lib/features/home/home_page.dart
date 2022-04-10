@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagramflutter/widgets/feed/feed_widget.dart';
-import 'package:instagramflutter/widgets/story/home_story_widget.dart';
 import 'dart:developer' as developer;
 
+import '../../widgets/feed/feed_widget.dart';
 import 'header_widget.dart';
 
 class HomePage extends StatefulWidget {

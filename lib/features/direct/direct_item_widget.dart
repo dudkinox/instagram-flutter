@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:instagramflutter/data/model/chat/conversation.dart';
+import '../../data/model/chat/conversation.dart';
 
 class DirectItemWidget extends StatelessWidget {
   final Conversation conversation;
@@ -10,12 +10,8 @@ class DirectItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 12,
-        horizontal: 16
-      ).copyWith(
-        right: 0
-      ),
+      padding:
+          EdgeInsets.symmetric(vertical: 12, horizontal: 16).copyWith(right: 0),
       child: Row(
         children: [
           CircleAvatar(
@@ -27,17 +23,21 @@ class DirectItemWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(conversation.user.fullName,
-                    style: Theme.of(context).textTheme.subtitle1,),
-                  Text(conversation.isActive ? 'Active now' : 'Active 1h ago',
-                    style: Theme.of(context).textTheme.caption,),
+                  Text(
+                    conversation.user.fullName,
+                    style: Theme.of(context).textTheme.subtitle1,
+                  ),
+                  Text(
+                    conversation.isActive ? 'Active now' : 'Active 1h ago',
+                    style: Theme.of(context).textTheme.caption,
+                  ),
                 ],
               ),
             ),
           ),
           IconButton(
-              icon: Icon(Icons.camera_alt),
-              onPressed: (){},
+            icon: Icon(Icons.camera_alt),
+            onPressed: () {},
           )
         ],
       ),

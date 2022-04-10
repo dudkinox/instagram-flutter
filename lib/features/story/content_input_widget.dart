@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:developer' as developer;
 
-import 'package:instagramflutter/res/icons_app.dart';
+import '../../res/icons_app.dart';
 
 const _kHeightInput = 48.0;
 
@@ -31,40 +31,44 @@ class _ContentInputWidgetState extends State<ContentInputWidget> {
                 padding: EdgeInsets.all(12),
                 decoration: ShapeDecoration(
                   shape: CircleBorder(
-                    side: Divider.createBorderSide(context, color: Colors.white)
-                  ),
+                      side: Divider.createBorderSide(context,
+                          color: Colors.white)),
                 ),
-                child: Icon(Icons.camera_alt, color: Colors.white,),
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                ),
               ),
               Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Container(
-                      padding: EdgeInsets.only(left: 16),
-                      decoration: ShapeDecoration(
+                      padding: EdgeInsets.only(left: 8),
+                      child: Container(
+                        padding: EdgeInsets.only(left: 16),
+                        decoration: ShapeDecoration(
                           shape: StadiumBorder(
-                              side: Divider.createBorderSide(context, color: Colors.white)
-                          ),
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Send message',
-                            hintStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                              color: Colors.white54
-                            ),
-                            suffixIcon: Icon(Icons.insert_emoticon, color: Colors.white,)
+                              side: Divider.createBorderSide(context,
+                                  color: Colors.white)),
                         ),
-                      ),
-                    )
-                  )
-              ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Send message',
+                              hintStyle: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  ?.copyWith(color: Colors.white54),
+                              suffixIcon: Icon(
+                                Icons.insert_emoticon,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ))),
               IconButton(
                   icon: SvgPicture.asset(IconsApp.icSend, color: Colors.white),
-                  onPressed: (){}),
+                  onPressed: () {}),
               IconButton(
                   icon: Icon(Icons.more_vert, color: Colors.white),
-                  onPressed: (){})
+                  onPressed: () {})
             ],
           ),
         ),

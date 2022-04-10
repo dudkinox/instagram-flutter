@@ -1,6 +1,6 @@
 import 'dart:developer' as developer;
 
-import 'package:instagramflutter/data/model/user.dart';
+import '../user.dart';
 
 class Conversation {
   static const TAG = 'Conversation';
@@ -11,8 +11,6 @@ class Conversation {
 
   DateTime lastActive;
 
-  Conversation({
-    required this.user, required this.isActive, required this.lastActive
-  });
-
+  Conversation(
+      {required this.user, required this.isActive, required this.lastActive});
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instagramflutter/features/search/search_bar_widget.dart';
 import 'dart:developer' as developer;
 
 import 'activity_item_widget.dart';

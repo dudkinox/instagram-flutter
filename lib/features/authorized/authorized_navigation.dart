@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagramflutter/features/comment/comment_page.dart';
 import 'dart:developer' as developer;
 
-import 'package:instagramflutter/features/home/home_page.dart';
-import 'package:instagramflutter/features/main_page.dart';
+import '../comment/comment_page.dart';
+import '../main_page.dart';
 
 class AuthorizedNavigation extends StatefulWidget {
   static const ROUTE_NAME = 'AuthorizedNavigation';
@@ -21,14 +20,12 @@ class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
         child: Navigator(
           key: navigator,
           onGenerateRoute: (setting) {
-            switch(setting.name) {
+            switch (setting.name) {
               case CommentPage.ROUTE_NAME:
                 return MaterialPageRoute(
-                    builder: (context) => CommentPage(
-                        setting.arguments as String
-                    ),
-                    settings: setting
-                );
+                    builder: (context) =>
+                        CommentPage(setting.arguments as String),
+                    settings: setting);
               default:
                 return MaterialPageRoute(builder: (context) => MainPage());
             }

@@ -1,14 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagramflutter/data/bloc/local_media_bloc.dart';
-import 'package:instagramflutter/features/explore/explore_page.dart';
-import 'package:instagramflutter/res/icons_app.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as developer;
 
-import 'package:instagramflutter/widgets/chip_widget.dart';
 import 'package:tuple/tuple.dart';
+
+import '../../data/bloc/local_media_bloc.dart';
+import '../../res/icons_app.dart';
+import '../../widgets/chip_widget.dart';
+import '../explore/explore_page.dart';
 
 class SearchPages extends StatefulWidget {
   static const ROUTE_NAME = 'SearchPages';
@@ -37,32 +38,32 @@ class _SearchPagesState extends State<SearchPages> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.leak_add),
-            onPressed: (){},
+            onPressed: () {},
           )
         ],
         bottom: PreferredSize(
             child: Container(
               height: 48,
               child: ListView.separated(
-                padding: EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 16
-                ),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 physics: BouncingScrollPhysics(),
-                separatorBuilder: (context, index) => SizedBox(width: 16,),
+                separatorBuilder: (context, index) => SizedBox(
+                  width: 16,
+                ),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => ChipWidget(
-                  kIsWeb ? Image.network(
-                    categories[index].item1,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    width: 18,
-                  ): SvgPicture.asset(
-                    categories[index].item1,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    width: 18,
-                  ),
-                  Text(categories[index].item2)
-                ),
+                    kIsWeb
+                        ? Image.network(
+                            categories[index].item1,
+                            color: Theme.of(context).colorScheme.onBackground,
+                            width: 18,
+                          )
+                        : SvgPicture.asset(
+                            categories[index].item1,
+                            color: Theme.of(context).colorScheme.onBackground,
+                            width: 18,
+                          ),
+                    Text(categories[index].item2)),
                 itemCount: categories.length,
               ),
             ),
@@ -70,22 +71,20 @@ class _SearchPagesState extends State<SearchPages> {
       ),
       body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2
-          ),
-          itemCount: context.watch<LocalMediaBloc>().files.length*6,
+              crossAxisCount: 4, crossAxisSpacing: 2, mainAxisSpacing: 2),
+          itemCount: context.watch<LocalMediaBloc>().files.length * 6,
           itemBuilder: (context, index) {
             return InkResponse(
-              child: Image.asset(context.watch<LocalMediaBloc>().files[index%8], fit: BoxFit.cover,),
+              child: Image.asset(
+                context.watch<LocalMediaBloc>().files[index % 8],
+                fit: BoxFit.cover,
+              ),
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => ExplorePage())
-                );
+                    MaterialPageRoute(builder: (context) => ExplorePage()));
               },
             );
           }),
     );
-
   }
 }
