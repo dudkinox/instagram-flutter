@@ -114,11 +114,7 @@ class _SignInPageState extends State<SignInPage> {
                             isLoading = true;
                           });
                           LoginController(
-                              widget.email.text,
-                              widget.password.text,
-                              context,
-                              setState,
-                              isLoading);
+                              widget.email.text, widget.password.text, context);
                         },
                       ),
                       SizedBox(
