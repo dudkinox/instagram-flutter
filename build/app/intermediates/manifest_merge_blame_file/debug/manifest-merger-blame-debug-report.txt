@@ -87,18 +87,36 @@
 61            android:value="2" />
 61-->/Users/sorener/Documents/GitHub/instagram-flutter/android/app/src/main/AndroidManifest.xml:29:48-65
 62
-63        <uses-library
-63-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-64            android:name="androidx.window.extensions"
-64-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-65            android:required="false" />
-65-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-66        <uses-library
-66-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-67            android:name="androidx.window.sidecar"
-67-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-68            android:required="false" />
-68-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-69    </application>
-70
-71</manifest>
+63        <provider
+63-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
+64            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+64-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-82
+65            android:authorities="com.dangngocduc.instagramflutter.flutter.image_provider"
+65-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-74
+66            android:exported="false"
+66-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
+67            android:grantUriPermissions="true" >
+67-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
+68            <meta-data
+68-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-15:75
+69                android:name="android.support.FILE_PROVIDER_PATHS"
+69-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
+70                android:resource="@xml/flutter_image_picker_file_paths" />
+70-->[:image_picker_android] /Users/sorener/Documents/GitHub/instagram-flutter/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-72
+71        </provider>
+72
+73        <uses-library
+73-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+74            android:name="androidx.window.extensions"
+74-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+75            android:required="false" />
+75-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+76        <uses-library
+76-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+77            android:name="androidx.window.sidecar"
+77-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+78            android:required="false" />
+78-->[androidx.window:window:1.0.0-beta04] /Users/sorener/.gradle/caches/transforms-2/files-2.1/a8cf43e18a1d7625f5d24e5c21b0a426/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+79    </application>
+80
+81</manifest>

@@ -1,3 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
+import 'dart:io';
+
 import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +18,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   static const TAG = 'SignUpPage';
   ResultFuture<bool>? singingFuture;
-  final ImagePicker _picker = ImagePicker();
+  late File file;
 
-  void onImageButtonPressed() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-  }
   @override
   Widget build(BuildContext context) {
     final inputBorder =
@@ -45,7 +46,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 64,
                   ),
                   IconButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      var image = await ImagePicker().getImage(
+                        source: ImageSource.gallery,
+                      );
+                      print(image);
                     },
                     icon: Image.asset('assets/images/profile-img.png'),
                     iconSize: 150,
