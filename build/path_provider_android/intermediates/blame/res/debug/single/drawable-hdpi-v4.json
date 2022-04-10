@@ -1,22 +1,22 @@
 [
     {
-        "merged": "/Users/sorener/Documents/GitHub/instagram_flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_normal.9.png",
-        "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal.9.png"
-    },
-    {
-        "merged": "/Users/sorener/Documents/GitHub/instagram_flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
-        "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
-    },
-    {
-        "merged": "/Users/sorener/Documents/GitHub/instagram_flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+        "merged": "/Users/sorener/Documents/GitHub/instagram-flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_low_normal.9.png",
         "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/Users/sorener/Documents/GitHub/instagram_flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+        "merged": "/Users/sorener/Documents/GitHub/instagram-flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/Users/sorener/Documents/GitHub/instagram-flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "/Users/sorener/Documents/GitHub/instagram-flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
         "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "/Users/sorener/Documents/GitHub/instagram_flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
-        "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+        "merged": "/Users/sorener/Documents/GitHub/instagram-flutter/build/path_provider_android/intermediates/res/merged/debug/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     }
 ]

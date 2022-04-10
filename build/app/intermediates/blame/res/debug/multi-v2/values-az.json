@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sorener/Documents/GitHub/instagram_flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az.xml",
+            "outputFile": "/Users/sorener/Documents/GitHub/instagram-flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az.xml",
             "map": [
                 {
                     "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/values-az/values-az.xml",

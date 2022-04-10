@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sorener/Documents/GitHub/instagram_flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/sorener/Documents/GitHub/instagram-flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/sorener/Documents/GitHub/instagram_flutter/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/sorener/Documents/GitHub/instagram-flutter/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
