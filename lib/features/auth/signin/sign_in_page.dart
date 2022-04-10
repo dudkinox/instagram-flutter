@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../Controllers/SignInController.dart';
 import '../../../components/Loading.dart';
+import 'package:instagramflutter/data/bloc/auth_bloc.dart';
+import 'package:instagramflutter/features/auth/signup/sign_up_page.dart';
+import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
   static const ROUTE_NAME = 'SignInPage';
@@ -136,12 +139,28 @@ class _SignInPageState extends State<SignInPage> {
                         flex: 2,
                       ),
                       Container(
-                        child: Text(
-                          'Don\'t have an account? sign up',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                      ),
+                          child: Row(
+                        children: [
+                          Text(
+                            'Don\'t have an account?',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SignUpPage()));
+                              },
+                              child: Text(
+                                "Sign up",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    ?.copyWith(color: Colors.blue),
+                              )),
+                        ],
+                      )),
                     ],
                   ),
                 ),
