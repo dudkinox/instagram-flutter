@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Snape\\Desktop\\instagram-flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
+            "outputFile": "/Users/sorener/Documents/GitHub/instagram-flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Snape\\.gradle\\caches\\transforms-2\\files-2.1\\1a18fd2047a604ce0767dd8047a3bdf1\\core-1.6.0\\res\\values-en-rGB\\values-en-rGB.xml",
+                    "source": "/Users/sorener/.gradle/caches/transforms-2/files-2.1/1a18fd2047a604ce0767dd8047a3bdf1/core-1.6.0/res/values-en-rGB/values-en-rGB.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

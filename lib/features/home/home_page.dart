@@ -25,10 +25,16 @@ class _HomePageState extends State<HomePage> {
       body: RefreshIndicator(
           child: SingleChildScrollView(
             child: Column(
-              children: <Widget>[FeedWidget(), FeedWidget()],
+              children: <Widget>[
+                HomeStoryWidget(),
+                FeedWidget(),
+                FeedWidget()
+              ],
             ),
           ),
-          onRefresh: () async {}),
+          onRefresh: () async {
+
+          }),
     );
   }
 }
