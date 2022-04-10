@@ -10,9 +10,9 @@ class Loader extends StatefulWidget {
 
 class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<double> aniamtion_rotaion;
-  late Animation<double> aniamtion_radius_in;
-  late Animation<double> aniamtion_radius_out;
+  late Animation<double> animationRotation;
+  late Animation<double> animationRadiusIn;
+  late Animation<double> animationRadiusOut;
 
   final double initialRadius = 30.0;
 
@@ -25,13 +25,13 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
     controller =
         AnimationController(vsync: this, duration: Duration(seconds: 5));
 
-    aniamtion_rotaion = Tween<double>(
+    animationRotation = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(CurvedAnimation(
         parent: controller, curve: Interval(0.0, 1.0, curve: Curves.linear)));
 
-    aniamtion_radius_in = Tween<double>(
+    animationRadiusIn = Tween<double>(
       begin: 1.0,
       end: 0.0,
     ).animate(
@@ -40,7 +40,7 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
         curve: Interval(0.75, 1.0, curve: Curves.elasticIn),
       ),
     );
-    aniamtion_radius_out = Tween<double>(
+    animationRadiusOut = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(
@@ -53,9 +53,9 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
     controller.addListener(() {
       setState(() {
         if (controller.value >= 0.75 && controller.value <= 1.0) {
-          radius = aniamtion_radius_in.value * initialRadius;
+          radius = animationRadiusIn.value * initialRadius;
         } else if (controller.value >= 0.0 && controller.value <= 0.25) {
-          radius = aniamtion_radius_out.value * initialRadius;
+          radius = animationRadiusOut.value * initialRadius;
         }
       });
     });
@@ -71,7 +71,7 @@ class _LoaderState extends State<Loader> with SingleTickerProviderStateMixin {
       height: 100.0,
       child: Center(
         child: RotationTransition(
-          turns: aniamtion_rotaion,
+          turns: animationRotation,
           child: Stack(
             children: [
               Dot(
