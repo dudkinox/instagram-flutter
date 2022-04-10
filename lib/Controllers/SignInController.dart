@@ -11,7 +11,7 @@ Future<void> LoginController(
     BuildContext context,
     void setState(void Function() fn),
     bool isLoading) async {
-  var result = await Login(email, password);
+  var result = await LoginService(email, password);
   if (result.email != "") {
     setState(() {
       isLoading = false;

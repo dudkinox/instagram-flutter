@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import '../database/client.dart';
 import '../models/AccountModel.dart';
 
-Future<AccountModel> Login(String email, String password) async {
+Future<AccountModel> LoginService(String email, String password) async {
   final String url = Host + "/api/account/" + email + "/" + password;
   final response = await http.get(
     Uri.parse(url),
@@ -17,7 +17,7 @@ Future<AccountModel> Login(String email, String password) async {
   return AccountModel.fromJson(jsonDecode(response.body));
 }
 
-Future<dynamic> Register(
+Future<dynamic> RegisterService(
     String email, String password, String name, String imageURL) async {
   try {
     final String Url = Host + "/api/account";
