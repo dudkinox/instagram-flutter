@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import '../database/client.dart';
@@ -18,28 +19,20 @@ Future<AccountModel> LoginService(String email, String password) async {
 }
 
 Future<dynamic> RegisterService(
-    String email, String password, String name, String imageURL) async {
+    String email, String password, String name, File imageURL) async {
   try {
     final String Url = Host + "/api/account";
-    final response = await http.post(
-      Uri.parse(Url),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        "email": email,
-        "password": password,
-        "name": name,
-        "image": imageURL
-      }),
-    );
 
-    if (response.statusCode == 400) {
-      var err = json.decode(json.encode(response.body));
-      return err;
-    }
-    String data = json.decode(json.encode(response.body));
-    return data;
+    var request = http.MultipartRequest('POST', Uri.parse(Url));
+    request.files.add(await http.MultipartFile.fromPath('img', imageURL.path));
+    request.headers.addAll({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'multipart/form-data; charset=UTF-8',
+    });
+
+    request.send();
+
+    return "register success";
   } catch (e) {
     print(e);
   }
