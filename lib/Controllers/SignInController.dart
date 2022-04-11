@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../features/auth/signin/sign_in_page.dart';
 import '../features/authorized/authorized_navigation.dart';
 import '../services/AccountService.dart';
 
@@ -36,7 +37,8 @@ Future<void> LoginController(
             FlatButton(
               child: const Text("Close"),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInPage()));
                 setState(() {
                   isLoading = false;
                 });
