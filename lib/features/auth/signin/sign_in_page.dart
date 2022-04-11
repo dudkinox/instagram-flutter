@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../Controllers/SignInController.dart';
 import '../../../components/Loading.dart';
-import 'package:provider/provider.dart';
 
 import '../signup/sign_up_page.dart';
 
@@ -139,28 +138,30 @@ class _SignInPageState extends State<SignInPage> {
                         flex: 2,
                       ),
                       Container(
-                          child: Row(
-                        children: [
-                          Text(
-                            'Don\'t have an account?',
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SignUpPage()));
-                              },
-                              child: Text(
-                                "Sign up",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    ?.copyWith(color: Colors.blue),
-                              )),
-                        ],
-                      )),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Don\'t have an account?',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SignUpPage()));
+                                },
+                                child: Text(
+                                  "Sign up",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1
+                                      ?.copyWith(color: Colors.blue),
+                                )),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

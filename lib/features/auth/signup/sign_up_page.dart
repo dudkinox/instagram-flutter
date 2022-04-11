@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../Controllers/SignUpController.dart';
+import '../signin/sign_in_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  bool isFile = false;
   bool isPasswordValid(String password) => password.length >= 6;
 
   @override
@@ -57,9 +59,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       );
                       setState(() {
                         file = File(image!.path);
+                        isFile = true;
                       });
                     },
-                    icon: Image.asset('assets/images/profile-img.png'),
+                    icon: !isFile
+                        ? Image.asset('assets/images/profile-img.png')
+                        : Image.file(file),
                     iconSize: 150,
                     padding: EdgeInsets.zero,
                   ),
@@ -183,6 +188,30 @@ class _SignUpPageState extends State<SignUpPage> {
                           file,
                           _formKey);
                     },
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Text(
+                          'If your have any account?',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignInPage()));
+                            },
+                            child: Text(
+                              "Sign in",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  ?.copyWith(color: Colors.blue),
+                            )),
+                      ],
+                    ),
                   ),
                 ],
               ),
