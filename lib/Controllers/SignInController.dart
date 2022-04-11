@@ -9,7 +9,7 @@ Future<void> LoginController(
     String email,
     String password,
     BuildContext context,
-    void setState(void Function() fn),
+    void Function(void Function() fn) setState,
     bool isLoading) async {
   var result = await LoginService(email, password);
   if (result.email != "") {
@@ -23,12 +23,12 @@ Future<void> LoginController(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Error"),
-          content: Text("Email or password is wrong"),
+          title: const Text("Error"),
+          content: const Text("Email or password is wrong"),
           actions: <Widget>[
             // ignore: deprecated_member_use
             FlatButton(
-              child: Text("Close"),
+              child: const Text("Close"),
               onPressed: () {
                 Navigator.of(context).pop();
                 setState(() {
