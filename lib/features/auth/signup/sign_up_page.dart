@@ -33,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Form(
               key: _formKey,
               child: Column(
@@ -78,7 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       focusedBorder: inputBorder,
                       enabledBorder: inputBorder,
                       filled: true,
-                      contentPadding: EdgeInsets.all(8),
+                      contentPadding: const EdgeInsets.all(8),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -98,7 +98,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       focusedBorder: inputBorder,
                       enabledBorder: inputBorder,
                       filled: true,
-                      contentPadding: EdgeInsets.all(8),
+                      contentPadding: const EdgeInsets.all(8),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -118,7 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         focusedBorder: inputBorder,
                         enabledBorder: inputBorder,
                         filled: true,
-                        contentPadding: EdgeInsets.all(8)),
+                        contentPadding: const EdgeInsets.all(8)),
                     obscureText: true,
                     validator: (password) {
                       if (isPasswordValid(password!)) {
@@ -138,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       focusedBorder: inputBorder,
                       enabledBorder: inputBorder,
                       filled: true,
-                      contentPadding: EdgeInsets.all(8),
+                      contentPadding: const EdgeInsets.all(8),
                     ),
                     obscureText: true,
                     validator: (value) {
