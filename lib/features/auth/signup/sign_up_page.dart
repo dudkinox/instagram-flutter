@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../services/AccountService.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
@@ -54,6 +56,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         var image = await ImagePicker().getImage(
                           source: ImageSource.gallery,
                         );
+                        setState(() {
+                          file = File(image!.path);
+                        });
                       },
                       icon: Image.asset('assets/images/profile-img.png'),
                       iconSize: 150,
@@ -172,9 +177,14 @@ class _SignUpPageState extends State<SignUpPage> {
                               Color(0xFFe1306c),
                             ])),
                       ),
-                      onTap: () {
+                      onTap: () async {
                         if (_formKey.currentState!.validate()) {
-                          print("validate");
+                          var status = await RegisterService(
+                              _emailController.text,
+                              _passwordController.text,
+                              _nameController.text,
+                              file);
+                          print(status);
                         }
                       },
                     ),
