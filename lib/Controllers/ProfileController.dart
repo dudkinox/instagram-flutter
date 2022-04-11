@@ -16,5 +16,24 @@ Future<void> UpdateProfileAccount(BuildContext context, String id, String email,
         MaterialPageRoute(
             builder: (context) =>
                 AccountPage(id: id, name: name, image: image, email: email)));
+  } else {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Error"),
+          content: const Text("Server error please try again"),
+          actions: <Widget>[
+            // ignore: deprecated_member_use
+            FlatButton(
+              child: const Text("Close"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
+    );
   }
 }

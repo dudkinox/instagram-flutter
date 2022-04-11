@@ -134,8 +134,8 @@ class _EditProfileState extends State<EditProfile> {
                               UpdateProfileAccount(
                                 context,
                                 widget.id,
-                                _nameController.text,
                                 _emailController.text,
+                                _nameController.text,
                                 res.password,
                                 res.image,
                               );
