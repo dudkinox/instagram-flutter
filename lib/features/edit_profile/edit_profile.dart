@@ -1,11 +1,13 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagream/models/ProfileModel.dart';
 
+import '../../Controllers/ProfileController.dart';
 import '../../components/Loading.dart';
-import '../../models/AccountModel.dart';
 import '../../services/AccountService.dart';
 
 class EditProfile extends StatefulWidget {
@@ -118,49 +120,6 @@ class _EditProfileState extends State<EditProfile> {
                             },
                           ),
                           const SizedBox(
-                            height: 24,
-                          ),
-                          TextFormField(
-                            controller: _passwordController,
-                            decoration: InputDecoration(
-                                hintText: 'Password',
-                                border: inputBorder,
-                                focusedBorder: inputBorder,
-                                enabledBorder: inputBorder,
-                                filled: true,
-                                contentPadding: const EdgeInsets.all(8)),
-                            obscureText: true,
-                            validator: (password) {
-                              if (isPasswordValid(password!)) {
-                                return null;
-                              } else {
-                                return 'Password must be at least 6 characters';
-                              }
-                            },
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: 'Confirm Password',
-                              border: inputBorder,
-                              focusedBorder: inputBorder,
-                              enabledBorder: inputBorder,
-                              filled: true,
-                              contentPadding: const EdgeInsets.all(8),
-                            ),
-                            obscureText: true,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please confirm your password';
-                              } else if (value != _passwordController.text) {
-                                return 'Password do not match';
-                              }
-                              return null;
-                            },
-                          ),
-                          const SizedBox(
                             height: 32,
                           ),
                           InkWell(
@@ -187,7 +146,14 @@ class _EditProfileState extends State<EditProfile> {
                                   ])),
                             ),
                             onTap: () {
-                              Navigator.pop(context);
+                              UpdateProfileAccount(
+                                context,
+                                widget.id,
+                                _nameController.text,
+                                _emailController.text,
+                                res.image,
+                                res.image,
+                              );
                             },
                           ),
                         ],

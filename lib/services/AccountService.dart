@@ -52,3 +52,23 @@ Future<ProfileModel> GetAccountByIDService(String id) async {
   );
   return ProfileModel.fromJson(jsonDecode(response.body));
 }
+
+Future<String> UpdateAccount(
+    String id, String email, String name, String password, String image) async {
+  final String url = Host + "/api/account/" + id;
+  final response = await http.put(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      "email": email,
+      "name": name,
+      "password": password,
+      "image": image,
+    }),
+  );
+
+  var data = json.decode(json.encode(response.body));
+  return data;
+}
