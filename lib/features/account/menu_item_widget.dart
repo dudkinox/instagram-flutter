@@ -14,14 +14,20 @@ class MenuItemWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text('$title', style: Theme.of(context).textTheme.subtitle2?.copyWith(
-            fontWeight: FontWeight.w800
-          ),),
+          Text(
+            '$title',
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2
+                ?.copyWith(fontWeight: FontWeight.w800),
+          ),
           Padding(
             padding: EdgeInsets.only(top: 2),
-            child: Text('$content', style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                fontSize: 13
-            ),),
+            child: Text(
+              '$content',
+              style:
+                  Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 13),
+            ),
           )
         ],
       ),

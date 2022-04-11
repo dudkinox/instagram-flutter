@@ -42,9 +42,8 @@ class _SignInPageState extends State<SignInPage> {
                         flex: 1,
                       ),
                       SvgPicture.asset(
-                        'assets/icons/ic_instagram.svg',
-                        color: Theme.of(context).colorScheme.onBackground,
-                        height: 32,
+                        'assets/icons/icons8-image-file.svg',
+                        height: 150,
                       ),
                       Flexible(
                         child: Container(),

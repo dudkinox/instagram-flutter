@@ -45,9 +45,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 64,
                   ),
                   SvgPicture.asset(
-                    'assets/icons/ic_instagram.svg',
-                    color: Theme.of(context).colorScheme.onBackground,
-                    height: 32,
+                    'assets/icons/icons8-image-file.svg',
+                    height: 50,
                   ),
                   const SizedBox(
                     height: 64,

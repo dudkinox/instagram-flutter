@@ -18,9 +18,10 @@ class _SplashPageState extends State<SplashPage> {
       body: ColorFiltered(
         colorFilter: ColorFilter.linearToSrgbGamma(),
         child: Center(
-          child: SvgPicture.asset('assets/icons/ic_instagram.svg',
-            height: 48,
-            color: Theme.of(context).colorScheme.onBackground,),
+          child: SvgPicture.asset(
+            'assets/icons/icons8-image-file.svg',
+            height: 200,
+          ),
         ),
       ),
     );
