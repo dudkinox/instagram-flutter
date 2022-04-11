@@ -44,10 +44,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   const SizedBox(
                     height: 64,
                   ),
-                  SvgPicture.asset(
-                    'assets/icons/icons8-image-file.svg',
-                    height: 50,
-                  ),
                   const SizedBox(
                     height: 64,
                   ),
