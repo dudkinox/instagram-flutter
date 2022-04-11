@@ -26,7 +26,6 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                   child: Container(
                 child: SvgPicture.asset(
                   IconsApp.logoInsta,
-                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
               )),
               IconButton(

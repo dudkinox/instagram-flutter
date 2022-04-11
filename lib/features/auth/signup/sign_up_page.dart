@@ -62,9 +62,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       });
                     },
                     icon: !isFile
-                        ? Image.asset('assets/images/profile-img.png')
+                        ? Image.asset('assets/images/User.png')
                         : Image.file(file),
-                    iconSize: 150,
+                    iconSize: 130,
                     padding: EdgeInsets.zero,
                   ),
                   Text(
