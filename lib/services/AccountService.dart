@@ -25,6 +25,9 @@ Future<dynamic> RegisterService(
 
     var request = http.MultipartRequest('POST', Uri.parse(Url));
     request.files.add(await http.MultipartFile.fromPath('img', imageURL.path));
+    request.fields['email'] = email;
+    request.fields['password'] = password;
+    request.fields['name'] = name;
     request.headers.addAll({
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'multipart/form-data; charset=UTF-8',
