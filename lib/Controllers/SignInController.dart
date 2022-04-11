@@ -24,6 +24,7 @@ Future<void> LoginController(
                   id: result.id,
                   name: result.name,
                   image: result.image,
+                  email: result.email,
                 )));
   } else {
     showDialog(

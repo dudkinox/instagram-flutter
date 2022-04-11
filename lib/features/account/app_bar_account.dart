@@ -7,6 +7,7 @@ class AppBarAccount extends StatefulWidget {
   final String id;
   final String name;
   final String image;
+  final String email;
 
   const AppBarAccount(
     this.onShowMenu, {
@@ -14,6 +15,7 @@ class AppBarAccount extends StatefulWidget {
     required this.id,
     required this.name,
     required this.image,
+    required this.email,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class _AppBarAccountState extends State<AppBarAccount> {
     return SliverPersistentHeader(
       pinned: true,
       delegate: AppBarAccountDelegate(MediaQuery.of(context).padding.top,
-          widget.id, widget.name, widget.image),
+          widget.id, widget.name, widget.image, widget.email),
     );
   }
 }

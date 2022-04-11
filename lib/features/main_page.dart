@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:developer' as developer;
 
-import 'account/account_page.dart';
 import 'bottom_nav/bottom_nav_page.dart';
-import 'camera/camera_pge.dart';
 
 class MainPage extends StatefulWidget {
-  final id;
-  final name;
-  final image;
+  final String id;
+  final String name;
+  final String image;
+  final String email;
   const MainPage(
-      {Key? key, required this.id, required this.name, required this.image})
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
       : super(key: key);
   static const ROUTE_NAME = 'MainPage';
   @override
@@ -48,7 +50,7 @@ class _MainPageState extends State<MainPage> {
                 _pageController.animateToPage(0,
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn);
-              }, widget.id, widget.name, widget.image),
+              }, widget.id, widget.name, widget.image, widget.email),
             ],
           ),
         ),

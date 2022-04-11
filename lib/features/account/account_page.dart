@@ -12,9 +12,14 @@ class AccountPage extends StatefulWidget {
   final String id;
   final String name;
   final String image;
+  final String email;
 
   const AccountPage(
-      {Key? key, required this.id, required this.name, required this.image})
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
       : super(key: key);
   @override
   _AccountPageState createState() => _AccountPageState();
@@ -45,7 +50,10 @@ class _AccountPageState extends State<AccountPage> {
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
                 AppBarAccount(_onShowMenu,
-                    id: widget.id, name: widget.name, image: widget.image),
+                    id: widget.id,
+                    name: widget.name,
+                    image: widget.image,
+                    email: widget.email),
                 SliverToBoxAdapter(
                   child: HeaderAccountWidget(
                       id: widget.id, name: widget.name, image: widget.image),

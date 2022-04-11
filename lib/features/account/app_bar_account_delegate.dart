@@ -7,8 +7,10 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   final String id;
   final String name;
   final String image;
+  final String email;
 
-  AppBarAccountDelegate(this.topPadding, this.id, this.name, this.image);
+  AppBarAccountDelegate(
+      this.topPadding, this.id, this.name, this.image, this.email);
 
   @override
   Widget build(
@@ -26,7 +28,7 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
               child: Row(
                 children: <Widget>[
                   Text(
-                    name,
+                    email,
                     style: Theme.of(context).primaryTextTheme.subtitle2,
                   ),
                 ],

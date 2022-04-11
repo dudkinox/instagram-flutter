@@ -7,11 +7,16 @@ import '../main_page.dart';
 
 class AuthorizedNavigation extends StatefulWidget {
   AuthorizedNavigation(
-      {Key? key, required this.id, required this.name, required this.image})
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
       : super(key: key);
   String id;
   String name;
   String image;
+  String email;
 
   @override
   _AuthorizedNavigationState createState() => _AuthorizedNavigationState();
@@ -34,7 +39,10 @@ class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
               default:
                 return MaterialPageRoute(
                     builder: (context) => MainPage(
-                        id: widget.id, name: widget.name, image: widget.image));
+                        id: widget.id,
+                        name: widget.name,
+                        image: widget.image,
+                        email: widget.email));
             }
           },
           initialRoute: MainPage.ROUTE_NAME,

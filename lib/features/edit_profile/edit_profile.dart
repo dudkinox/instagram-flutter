@@ -26,7 +26,6 @@ class _EditProfileState extends State<EditProfile> {
   bool isFile = false;
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
   bool isPasswordValid(String password) => password.length >= 6;
 
   @override
@@ -51,36 +50,22 @@ class _EditProfileState extends State<EditProfile> {
                       key: _formKey,
                       child: Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.close),
+                                onPressed: () => Navigator.of(context).pop(),
+                              ),
+                            ],
+                          ),
                           const SizedBox(
                             height: 64,
                           ),
-                          const Text("Edit Profile",
+                          const Text("UPDATE PROFILE",
                               style: TextStyle(fontSize: 30)),
                           const SizedBox(
                             height: 64,
-                          ),
-                          IconButton(
-                            onPressed: () async {
-                              var image = await ImagePicker().getImage(
-                                source: ImageSource.gallery,
-                              );
-                              setState(() {
-                                file = File(image!.path);
-                                isFile = true;
-                              });
-                            },
-                            icon: !isFile
-                                ? Image.network(res.image)
-                                : Image.file(file),
-                            iconSize: 130,
-                            padding: EdgeInsets.zero,
-                          ),
-                          Text(
-                            'Upload a profile picture',
-                            style: Theme.of(context).textTheme.subtitle1,
-                          ),
-                          const SizedBox(
-                            height: 32,
                           ),
                           TextFormField(
                             controller: _nameController,

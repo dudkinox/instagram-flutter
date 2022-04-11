@@ -35,7 +35,7 @@ class _AuthorizationStatePageState extends State<AuthorizationStatePage> {
           if (bloc.user?.asValue?.value == null) {
             return AuthorizationNavigator();
           } else {
-            return AuthorizedNavigation(id: "", name: "", image: "");
+            return AuthorizedNavigation(id: "", name: "", image: "", email: "");
           }
         }
       },

@@ -18,8 +18,10 @@ class BottomNavPage extends StatefulWidget {
   final String id;
   final String name;
   final String image;
+  final String email;
 
-  const BottomNavPage(this.onCameraClick, this.id, this.name, this.image,
+  const BottomNavPage(
+      this.onCameraClick, this.id, this.name, this.image, this.email,
       {Key? key})
       : super(key: key);
 
@@ -67,7 +69,11 @@ class _BottomNavPageState extends State<BottomNavPage> {
           HomePage(widget.onCameraClick),
           SearchPages(),
           ActivityPage(),
-          AccountPage(id: widget.id, name: widget.name, image: widget.image),
+          AccountPage(
+              id: widget.id,
+              name: widget.name,
+              image: widget.image,
+              email: widget.email),
         ],
       ),
       bottomNavigationBar: Material(
