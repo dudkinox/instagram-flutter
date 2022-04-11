@@ -38,11 +38,6 @@ class _MainPageState extends State<MainPage> {
               currentPage = current;
             },
             children: <Widget>[
-              CameraPge(() {
-                _pageController.animateToPage(1,
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeIn);
-              }),
               BottomNavPage(() {
                 _pageController.animateToPage(0,
                     duration: Duration(milliseconds: 300),

@@ -22,12 +22,6 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
         child: Container(
           child: Row(
             children: <Widget>[
-              IconButton(
-                  icon: SvgPicture.asset(
-                    IconsApp.icCamera,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-                  onPressed: onCameraClick),
               Expanded(
                   child: Container(
                 child: SvgPicture.asset(
