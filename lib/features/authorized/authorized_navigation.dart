@@ -1,18 +1,23 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import '../comment/comment_page.dart';
 import '../main_page.dart';
 
 class AuthorizedNavigation extends StatefulWidget {
-  static const ROUTE_NAME = 'AuthorizedNavigation';
+  AuthorizedNavigation(
+      {Key? key, required this.id, required this.name, required this.image})
+      : super(key: key);
+  String id;
+  String name;
+  String image;
+
   @override
   _AuthorizedNavigationState createState() => _AuthorizedNavigationState();
 }
 
 class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
-  static const TAG = 'AuthorizedNavigation';
-
   GlobalKey<NavigatorState> navigator = GlobalKey();
   @override
   Widget build(BuildContext context) {

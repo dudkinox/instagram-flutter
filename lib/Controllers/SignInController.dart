@@ -16,8 +16,14 @@ Future<void> LoginController(
     setState(() {
       isLoading = false;
     });
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => AuthorizedNavigation()));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => AuthorizedNavigation(
+                  id: result.id,
+                  name: result.name,
+                  image: result.image,
+                )));
   } else {
     showDialog(
       context: context,

@@ -1,21 +1,15 @@
-import 'dart:developer' as developer;
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../application.dart';
+
 class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
-  static const TAG = 'AppBarAccount';
-
   final double topPadding;
-  final VoidCallback onShowMenu;
 
-  AppBarAccountDelegate(this.topPadding, this.onShowMenu);
+  AppBarAccountDelegate(this.topPadding);
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    developer.log('build [$context, $shrinkOffset, $overlapsContent]',
-        name: TAG);
     return Material(
       color: Theme.of(context).primaryColor,
       child: Container(
@@ -25,14 +19,14 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
               child: Row(
                 children: <Widget>[
                   Text(
-                    'dangngocduc',
+                    'ชื่อผู้ใช้',
                     style: Theme.of(context).primaryTextTheme.subtitle2,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.keyboard_arrow_down,
                     size: 16,
                   )
@@ -40,8 +34,13 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: onShowMenu,
+              icon: const Icon(Icons.logout_outlined),
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Application()))
+              },
             )
           ],
         ),

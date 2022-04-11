@@ -23,15 +23,8 @@ class _AccountPageState extends State<AccountPage> {
     super.initState();
     _onShowMenu = () {
       context.showBottomSheet([
-        BottomSheetAction(iconData: Icons.archive, title: 'Archive', id: 1),
-        BottomSheetAction(iconData: Icons.show_chart, title: 'Insights', id: 2),
         BottomSheetAction(
-            iconData: Icons.history, title: 'Your activity', id: 3),
-        BottomSheetAction(iconData: Icons.scanner, title: 'QR Code', id: 4),
-        BottomSheetAction(
-            iconData: Icons.bookmark_border, title: 'Saved', id: 5),
-        BottomSheetAction(
-            iconData: Icons.group_add, title: 'Discover People', id: 6),
+            iconData: Icons.logout_outlined, title: 'Logout', id: 1),
       ]);
     };
   }
@@ -56,7 +49,7 @@ class _AccountPageState extends State<AccountPage> {
                     child: TabBar(
                       indicatorColor:
                           Theme.of(context).colorScheme.onBackground,
-                      tabs: [
+                      tabs: const [
                         Tab(
                           icon: Icon(Icons.grid_on),
                         ),
@@ -71,8 +64,8 @@ class _AccountPageState extends State<AccountPage> {
             },
             body: TabBarView(children: [
               GridView.builder(
-                  padding: EdgeInsets.all(2),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  padding: const EdgeInsets.all(2),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 2,
                       mainAxisSpacing: 2),
@@ -84,8 +77,8 @@ class _AccountPageState extends State<AccountPage> {
                     );
                   }),
               GridView.builder(
-                  padding: EdgeInsets.all(2),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  padding: const EdgeInsets.all(2),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       crossAxisSpacing: 2,
                       mainAxisSpacing: 2),
