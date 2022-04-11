@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../database/client.dart';
 import '../models/AccountModel.dart';
+import '../models/ProfileModel.dart';
 
 Future<AccountModel> LoginService(String email, String password) async {
   final String url = Host + "/api/account/" + email + "/" + password;
@@ -39,4 +40,15 @@ Future<dynamic> RegisterService(
   } catch (e) {
     print(e);
   }
+}
+
+Future<ProfileModel> GetAccountByIDService(String id) async {
+  final String url = Host + "/api/account/" + id;
+  final response = await http.get(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  return ProfileModel.fromJson(jsonDecode(response.body));
 }

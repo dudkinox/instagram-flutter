@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
+import '../edit_profile/edit_profile.dart';
 import 'big_avatar_user_widget.dart';
 import 'menu_item_widget.dart';
 
@@ -79,7 +80,13 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
             child: OutlineButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(4))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditProfile(id: widget.id),
+                    ));
+              },
               child: Text(
                 'Edit Profile',
                 style: Theme.of(context).textTheme.subtitle2,
