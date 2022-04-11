@@ -15,7 +15,7 @@ class _ActivityPageState extends State<ActivityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Activity'),
+        title: Text('แจ้งเตือน'),
         centerTitle: false,
       ),
       body: RefreshIndicator(
