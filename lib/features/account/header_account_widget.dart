@@ -6,6 +6,13 @@ import 'menu_item_widget.dart';
 
 class HeaderAccountWidget extends StatefulWidget {
   static const ROUTE_NAME = 'HeaderAccountWidget';
+  final String id;
+  final String name;
+  final String image;
+
+  const HeaderAccountWidget(
+      {Key? key, required this.id, required this.name, required this.image})
+      : super(key: key);
   @override
   _HeaderAccountWidgetState createState() => _HeaderAccountWidgetState();
 }
@@ -19,7 +26,7 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 16,
               horizontal: 16,
             ),
@@ -30,12 +37,16 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    BigAvatarUserWidget(),
+                    BigAvatarUserWidget(
+                        id: widget.id, name: widget.name, image: widget.image),
                     Padding(
-                      padding: EdgeInsets.only(top: 8),
+                      padding: const EdgeInsets.only(top: 8),
                       child: Text(
-                        'Đặng Ngọc Đức',
-                        style: Theme.of(context).textTheme.bodyText2,
+                        widget.name,
+                        style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     )
                   ],

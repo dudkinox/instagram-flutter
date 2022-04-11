@@ -7,6 +7,12 @@ import 'bottom_nav/bottom_nav_page.dart';
 import 'camera/camera_pge.dart';
 
 class MainPage extends StatefulWidget {
+  final id;
+  final name;
+  final image;
+  const MainPage(
+      {Key? key, required this.id, required this.name, required this.image})
+      : super(key: key);
   static const ROUTE_NAME = 'MainPage';
   @override
   _MainPageState createState() => _MainPageState();
@@ -32,7 +38,7 @@ class _MainPageState extends State<MainPage> {
     return WillPopScope(
         child: Scaffold(
           body: PageView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: _pageController,
             onPageChanged: (current) {
               currentPage = current;
@@ -40,16 +46,17 @@ class _MainPageState extends State<MainPage> {
             children: <Widget>[
               BottomNavPage(() {
                 _pageController.animateToPage(0,
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn);
-              }),
+              }, widget.id, widget.name, widget.image),
             ],
           ),
         ),
         onWillPop: () async {
           if (currentPage == 0) {
             _pageController.animateToPage(1,
-                duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeIn);
             return false;
           } else {
             return true;

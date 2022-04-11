@@ -15,8 +15,13 @@ class BottomNavPage extends StatefulWidget {
   static const ROUTE_NAME = 'BottomNavPage';
 
   final VoidCallback onCameraClick;
+  final String id;
+  final String name;
+  final String image;
 
-  BottomNavPage(this.onCameraClick);
+  const BottomNavPage(this.onCameraClick, this.id, this.name, this.image,
+      {Key? key})
+      : super(key: key);
 
   @override
   _BottomNavPageState createState() => _BottomNavPageState();
@@ -26,14 +31,14 @@ class _BottomNavPageState extends State<BottomNavPage> {
   static const TAG = 'BottomNavPage';
 
   int _currentTabIndex = 0;
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   List<Tuple2<String, String>> tabsIcons = [
-    Tuple2(IconsApp.icHome, IconsApp.icHomeSelected),
-    Tuple2(IconsApp.icSearch, IconsApp.icSearchSelected),
-    Tuple2(IconsApp.icCreatePost, IconsApp.icCreatePost),
-    Tuple2(IconsApp.icFavorite, IconsApp.icFavoriteSelected),
-    Tuple2(IconsApp.icAccount, IconsApp.icAccountSelected),
+    const Tuple2(IconsApp.icHome, IconsApp.icHomeSelected),
+    const Tuple2(IconsApp.icSearch, IconsApp.icSearchSelected),
+    const Tuple2(IconsApp.icCreatePost, IconsApp.icCreatePost),
+    const Tuple2(IconsApp.icFavorite, IconsApp.icFavoriteSelected),
+    const Tuple2(IconsApp.icAccount, IconsApp.icAccountSelected),
   ];
 
   @override
@@ -62,7 +67,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
           HomePage(widget.onCameraClick),
           SearchPages(),
           ActivityPage(),
-          AccountPage()
+          AccountPage(id: widget.id, name: widget.name, image: widget.image),
         ],
       ),
       bottomNavigationBar: Material(

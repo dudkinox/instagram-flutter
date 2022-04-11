@@ -32,7 +32,9 @@ class _AuthorizedNavigationState extends State<AuthorizedNavigation> {
                         CommentPage(setting.arguments as String),
                     settings: setting);
               default:
-                return MaterialPageRoute(builder: (context) => MainPage());
+                return MaterialPageRoute(
+                    builder: (context) => MainPage(
+                        id: widget.id, name: widget.name, image: widget.image));
             }
           },
           initialRoute: MainPage.ROUTE_NAME,

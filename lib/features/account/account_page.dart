@@ -9,6 +9,13 @@ import 'tab_bar_sliver_persistent_header_delegate.dart';
 
 class AccountPage extends StatefulWidget {
   static const ROUTE_NAME = 'AccountPage';
+  final String id;
+  final String name;
+  final String image;
+
+  const AccountPage(
+      {Key? key, required this.id, required this.name, required this.image})
+      : super(key: key);
   @override
   _AccountPageState createState() => _AccountPageState();
 }
@@ -37,28 +44,31 @@ class _AccountPageState extends State<AccountPage> {
         body: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
-                AppBarAccount(_onShowMenu),
+                AppBarAccount(_onShowMenu,
+                    id: widget.id, name: widget.name, image: widget.image),
                 SliverToBoxAdapter(
-                  child: HeaderAccountWidget(),
+                  child: HeaderAccountWidget(
+                      id: widget.id, name: widget.name, image: widget.image),
                 ),
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: TabBarSliverPersistentHeaderDelegate(
-                      child: Container(
-                    height: 48,
-                    child: TabBar(
-                      indicatorColor:
-                          Theme.of(context).colorScheme.onBackground,
-                      tabs: const [
-                        Tab(
-                          icon: Icon(Icons.grid_on),
-                        ),
-                        Tab(
-                          icon: Icon(Icons.person_outline),
-                        )
-                      ],
+                    child: Container(
+                      height: 48,
+                      child: TabBar(
+                        indicatorColor:
+                            Theme.of(context).colorScheme.onBackground,
+                        tabs: const [
+                          Tab(
+                            icon: Icon(Icons.grid_on),
+                          ),
+                          Tab(
+                            icon: Icon(Icons.person_outline),
+                          )
+                        ],
+                      ),
                     ),
-                  )),
+                  ),
                 )
               ];
             },
