@@ -9,7 +9,6 @@ import '../services/AccountService.dart';
 Future<void> RegisterController(String email, String password, String name,
     File image, GlobalKey<FormState> _formKey) async {
   if (_formKey.currentState!.validate()) {
-    var status = await RegisterService(email, password, name, image);
-    print("status: " + status);
+    await RegisterService(email, password, name, image);
   }
 }

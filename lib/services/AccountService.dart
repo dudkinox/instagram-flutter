@@ -34,8 +34,6 @@ Future<dynamic> RegisterService(
     });
 
     request.send();
-    print(request.fields);
-    print(request.files.length);
 
     return "register success";
   } catch (e) {
