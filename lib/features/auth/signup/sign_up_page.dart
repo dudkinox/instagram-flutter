@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../Controllers/SignUpController.dart';
-import '../../../services/AccountService.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
