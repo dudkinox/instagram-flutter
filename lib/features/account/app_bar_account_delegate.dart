@@ -4,8 +4,11 @@ import '../../application.dart';
 
 class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   final double topPadding;
+  final String id;
+  final String name;
+  final String image;
 
-  AppBarAccountDelegate(this.topPadding);
+  AppBarAccountDelegate(this.topPadding, this.id, this.name, this.image);
 
   @override
   Widget build(
@@ -23,13 +26,9 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
               child: Row(
                 children: <Widget>[
                   Text(
-                    'ชื่อผู้ใช้',
+                    name,
                     style: Theme.of(context).primaryTextTheme.subtitle2,
                   ),
-                  const Icon(
-                    Icons.keyboard_arrow_down,
-                    size: 16,
-                  )
                 ],
               ),
             ),
