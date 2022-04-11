@@ -136,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
                                 widget.id,
                                 _nameController.text,
                                 _emailController.text,
-                                res.image,
+                                res.password,
                                 res.image,
                               );
                             },
