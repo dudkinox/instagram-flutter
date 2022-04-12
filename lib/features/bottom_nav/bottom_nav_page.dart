@@ -66,8 +66,16 @@ class _BottomNavPageState extends State<BottomNavPage> {
           }
         },
         children: <Widget>[
-          HomePage(widget.onCameraClick),
-          SearchPages(),
+          HomePage(widget.onCameraClick,
+              id: widget.id,
+              name: widget.name,
+              image: widget.image,
+              email: widget.email),
+          SearchPages(
+              id: widget.id,
+              name: widget.name,
+              image: widget.image,
+              email: widget.email),
           ActivityPage(),
           AccountPage(
               id: widget.id,

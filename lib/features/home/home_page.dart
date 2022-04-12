@@ -8,8 +8,18 @@ class HomePage extends StatefulWidget {
   static const ROUTE_NAME = 'HomePage';
 
   final VoidCallback onCameraClick;
+  final String id;
+  final String name;
+  final String image;
+  final String email;
 
-  HomePage(this.onCameraClick);
+  const HomePage(this.onCameraClick,
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
+      : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -24,7 +34,18 @@ class _HomePageState extends State<HomePage> {
       body: RefreshIndicator(
           child: SingleChildScrollView(
             child: Column(
-              children: <Widget>[FeedWidget(), FeedWidget()],
+              children: <Widget>[
+                FeedWidget(
+                    id: widget.id,
+                    name: widget.name,
+                    image: widget.image,
+                    email: widget.email),
+                FeedWidget(
+                    id: widget.id,
+                    name: widget.name,
+                    image: widget.image,
+                    email: widget.email),
+              ],
             ),
           ),
           onRefresh: () async {}),

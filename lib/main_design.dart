@@ -16,7 +16,7 @@ class MyDesignTest extends StatelessWidget {
       home: Scaffold(
         body: Container(
           alignment: Alignment.center,
-          child: ExplorePage(),
+          child: const ExplorePage(id: "", name: "", image: "", email: ""),
         ),
       ),
     );

@@ -6,17 +6,15 @@ class CommentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 16,
-        horizontal: 16
-      ),
+      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: Row(
         children: [
           CircleAvatar(
             backgroundImage: AssetImage('assets/sample/ic_avatar_1.jpg'),
             radius: 18,
           ),
-          Expanded(child: Container(
+          Expanded(
+              child: Container(
             child: Padding(
               padding: EdgeInsets.only(left: 16),
               child: Column(
@@ -24,26 +22,30 @@ class CommentWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(text: 'dangngocduc', style: Theme.of(context).textTheme.bodyText2),
-                        TextSpan(text: 'This one looks amazing', style: Theme.of(context).textTheme.bodyText1),
-                      ]
-                    ),
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: 'dangngocduc',
+                          style: Theme.of(context).textTheme.bodyText2),
+                      TextSpan(
+                          text: 'This one looks amazing',
+                          style: Theme.of(context).textTheme.bodyText1),
+                    ]),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 4),
                     child: DefaultTextStyle(
                         style: Theme.of(context).textTheme.caption!.copyWith(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400
-                        ),
+                            fontSize: 12, fontWeight: FontWeight.w400),
                         child: Row(
                           children: [
                             Text('5d'),
-                            SizedBox(width: 24,),
+                            SizedBox(
+                              width: 24,
+                            ),
                             Text('3 likes'),
-                            SizedBox(width: 24,),
+                            SizedBox(
+                              width: 24,
+                            ),
                             Text('Reply')
                           ],
                         )),
@@ -54,7 +56,10 @@ class CommentWidget extends StatelessWidget {
           )),
           Container(
             padding: EdgeInsets.all(8),
-            child: Icon(Icons.favorite, size: 16,),
+            child: Icon(
+              Icons.favorite,
+              size: 16,
+            ),
           )
         ],
       ),

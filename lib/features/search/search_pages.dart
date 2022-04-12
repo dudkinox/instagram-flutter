@@ -13,6 +13,20 @@ import '../explore/explore_page.dart';
 
 class SearchPages extends StatefulWidget {
   static const ROUTE_NAME = 'SearchPages';
+
+  const SearchPages(
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
+      : super(key: key);
+
+  final String id;
+  final String name;
+  final String image;
+  final String email;
+
   @override
   _SearchPagesState createState() => _SearchPagesState();
 }
@@ -80,8 +94,12 @@ class _SearchPagesState extends State<SearchPages> {
                 fit: BoxFit.cover,
               ),
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ExplorePage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ExplorePage(
+                        id: widget.id,
+                        name: widget.name,
+                        image: widget.image,
+                        email: widget.email)));
               },
             );
           }),
