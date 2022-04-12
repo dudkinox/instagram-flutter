@@ -5,6 +5,7 @@ import 'dart:developer' as developer;
 
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../chat/chat.dart';
 import '../../res/icons_app.dart';
 import '../direct/direct_page.dart';
 
@@ -35,8 +36,8 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(
-                        CupertinoPageRoute(builder: (context) => DirectPage()));
+                    Navigator.of(context).push(CupertinoPageRoute(
+                        builder: (context) => const ChatPrivate()));
                   })
             ],
           ),
