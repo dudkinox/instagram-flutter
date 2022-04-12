@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
+
+import 'package:image_picker/image_picker.dart';
 
 class BigAvatarUserWidget extends StatefulWidget {
   static const ROUTE_NAME = 'BigAvatarUserWidget';
@@ -16,41 +20,74 @@ class BigAvatarUserWidget extends StatefulWidget {
 
 class _BigAvatarUserWidgetState extends State<BigAvatarUserWidget> {
   static const TAG = 'BigAvatarUserWidget';
+  late File file;
+  bool isFile = false;
+
   @override
   Widget build(BuildContext context) {
-    print(widget.image);
-    return Container(
+    return SizedBox(
       width: 80,
       height: 80,
       child: Stack(
         children: <Widget>[
-          Positioned.fill(
-              child: CircleAvatar(
-            radius: 30.0,
-            backgroundImage: NetworkImage(widget.image),
-            backgroundColor: Colors.transparent,
-          )),
-          Positioned(
-            child: ClipOval(
-              child: Container(
-                decoration: ShapeDecoration(
-                    color: Colors.blueAccent,
-                    shape: CircleBorder(
-                      side: Divider.createBorderSide(context,
-                          width: 2, color: Theme.of(context).cardColor),
-                    )),
-                padding: const EdgeInsets.all(2),
-                alignment: Alignment.center,
-                child: const Icon(
-                  Icons.add,
-                  size: 12,
-                  color: Colors.white,
+          IconButton(
+            onPressed: () async {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Select choice'),
+                  content: SingleChildScrollView(
+                    child: ListBody(
+                      children: <Widget>[
+                        GestureDetector(
+                          child: const Text('Gallery'),
+                          onTap: () async {
+                            var image = await ImagePicker().getImage(
+                              source: ImageSource.gallery,
+                            );
+                            setState(() {
+                              file = File(image!.path);
+                              isFile = true;
+                            });
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        GestureDetector(
+                          child: const Text('Camera'),
+                          onTap: () async {
+                            var image = await ImagePicker().getImage(
+                              source: ImageSource.camera,
+                            );
+                            setState(() {
+                              file = File(image!.path);
+                              isFile = true;
+                            });
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            right: 0,
-            bottom: 0,
-          )
+              );
+            },
+            icon: !isFile
+                ? CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: NetworkImage(widget.image),
+                    backgroundColor: Colors.transparent,
+                  )
+                : CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: FileImage(file),
+                    backgroundColor: Colors.transparent,
+                  ),
+            iconSize: 130,
+            padding: EdgeInsets.zero,
+          ),
         ],
       ),
     );

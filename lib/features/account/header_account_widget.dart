@@ -70,7 +70,7 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
           ),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
           ),
@@ -78,7 +78,7 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
             padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
             width: double.infinity,
             child: OutlineButton(
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(4))),
               onPressed: () {
                 Navigator.push(
