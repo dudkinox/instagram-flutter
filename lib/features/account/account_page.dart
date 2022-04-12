@@ -44,7 +44,7 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 1,
       child: Scaffold(
         body: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -69,9 +69,6 @@ class _AccountPageState extends State<AccountPage> {
                         tabs: const [
                           Tab(
                             icon: Icon(Icons.grid_on),
-                          ),
-                          Tab(
-                            icon: Icon(Icons.person_outline),
                           )
                         ],
                       ),
@@ -94,19 +91,6 @@ class _AccountPageState extends State<AccountPage> {
                       fit: BoxFit.cover,
                     );
                   }),
-              GridView.builder(
-                  padding: const EdgeInsets.all(2),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 2,
-                      mainAxisSpacing: 2),
-                  itemCount: 40,
-                  itemBuilder: (context, index) {
-                    return Image.asset(
-                      'assets/sample/search_demo1.jpg',
-                      fit: BoxFit.cover,
-                    );
-                  })
             ])),
       ),
     );
