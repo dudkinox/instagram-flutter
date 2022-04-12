@@ -28,12 +28,6 @@ class FooterWidget extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
               onPressed: () {}),
-          Expanded(
-              child: Align(
-            alignment: Alignment.bottomRight,
-            child:
-                IconButton(icon: Icon(Icons.bookmark_border), onPressed: () {}),
-          ))
         ],
       ),
     );
