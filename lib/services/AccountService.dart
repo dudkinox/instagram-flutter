@@ -76,7 +76,7 @@ Future<String> UpdateAccount(
 Future<String> UpdateImageAccount(String id, File image) async {
   final String Url = Host + "/api/account/update-image/" + id;
 
-  var request = http.MultipartRequest('POST', Uri.parse(Url));
+  var request = http.MultipartRequest('PUT', Uri.parse(Url));
   request.files.add(await http.MultipartFile.fromPath('img', image.path));
   request.headers.addAll({
     'Access-Control-Allow-Origin': '*',
