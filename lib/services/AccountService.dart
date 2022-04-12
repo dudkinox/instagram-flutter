@@ -72,3 +72,18 @@ Future<String> UpdateAccount(
   var data = json.decode(json.encode(response.body));
   return data;
 }
+
+Future<String> UpdateImageAccount(String id, File image) async {
+  final String Url = Host + "/api/account/update-image/" + id;
+
+  var request = http.MultipartRequest('POST', Uri.parse(Url));
+  request.files.add(await http.MultipartFile.fromPath('img', image.path));
+  request.headers.addAll({
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'multipart/form-data; charset=UTF-8',
+  });
+
+  request.send();
+
+  return "success";
+}
