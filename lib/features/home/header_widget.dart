@@ -25,7 +25,8 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
               Expanded(
                   child: Container(
                 child: SvgPicture.asset(
-                  IconsApp.logoInsta,
+                  IconsApp.logoBUMU,
+                  height: 150,
                 ),
               )),
               IconButton(

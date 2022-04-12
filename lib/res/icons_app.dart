@@ -3,7 +3,8 @@ import 'dart:developer' as developer;
 class IconsApp {
   static const TAG = 'Icons';
 
-  static const String logoInsta = 'assets/icons/icons8-image-file.svg';
+  static const String logoInsta = 'assets/icons/BAMU_LOGO.svg';
+  static const String logoBUMU = 'assets/icons/BAMU.svg';
   static const String icSend = 'assets/icons/ic_send.svg';
 
   static const String icComment = 'assets/icons/ic_comment.svg';

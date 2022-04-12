@@ -42,7 +42,7 @@ class _SignInPageState extends State<SignInPage> {
                         flex: 1,
                       ),
                       SvgPicture.asset(
-                        'assets/icons/icons8-image-file.svg',
+                        'assets/icons/BAMU_LOGO.svg',
                         height: 150,
                       ),
                       Flexible(
