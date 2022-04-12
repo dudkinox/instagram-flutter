@@ -87,3 +87,15 @@ Future<String> UpdateImageAccount(String id, File image) async {
 
   return "success";
 }
+
+Future<List<AccountModel>> GetAllAccounts() async {
+  final String url = Host + "/api/account";
+  final response = await http.get(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  return List<AccountModel>.from(
+      json.decode(response.body).map((data) => AccountModel.fromJson(data)));
+}
