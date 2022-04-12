@@ -1,18 +1,26 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:developer' as developer;
 
-import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../../chat/chat.dart';
 import '../../res/icons_app.dart';
-import '../direct/direct_page.dart';
 
 class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
   final VoidCallback onCameraClick;
 
-  HeaderWidget(this.onCameraClick);
+  HeaderWidget(this.onCameraClick, {Key? key}) : super(key: key);
+
+  Future openBrowserURL({required String url, bool inApp = false}) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: inApp,
+        forceWebView: inApp,
+        enableJavaScript: true,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +43,9 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
                     IconsApp.icSend,
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
-                  onPressed: () {
-                    Navigator.of(context).push(CupertinoPageRoute(
-                        builder: (context) => const ChatPrivate()));
+                  onPressed: () async {
+                    const url = 'https://chat-instagram.herokuapp.com';
+                    openBrowserURL(url: url, inApp: true);
                   })
             ],
           ),
@@ -47,5 +55,5 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(48);
+  Size get preferredSize => const Size.fromHeight(48);
 }
