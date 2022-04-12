@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
         colorFilter: ColorFilter.linearToSrgbGamma(),
         child: Center(
           child: SvgPicture.asset(
-            'assets/icons/BAMU_LOGO.svg',
+            'assets/icons/icons8-image-file.svg',
             height: 200,
           ),
         ),
