@@ -6,22 +6,19 @@ import '../../res/icons_app.dart';
 import '../account/account_page.dart';
 import '../activity/activity_page.dart';
 import '../home/home_page.dart';
-import '../post/post_page.dart';
+import '../post/setting_post_page.dart';
 import '../search/search_pages.dart';
 import 'bottom_navigation_item.dart';
 
 class BottomNavPage extends StatefulWidget {
   static const ROUTE_NAME = 'BottomNavPage';
 
-  final VoidCallback onCameraClick;
   final String id;
   final String name;
   final String image;
   final String email;
 
-  const BottomNavPage(
-      this.onCameraClick, this.id, this.name, this.image, this.email,
-      {Key? key})
+  const BottomNavPage(this.id, this.name, this.image, this.email, {Key? key})
       : super(key: key);
 
   @override
@@ -116,7 +113,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                     child: BottomNavigationItem(
                         tabsIcons[2], 2 == _currentTabIndex, onPress: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => PostPage(
+                      builder: (context) => SettingPostPage(
                             id: widget.id,
                             name: widget.name,
                             image: widget.image,

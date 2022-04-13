@@ -46,11 +46,7 @@ class _MainPageState extends State<MainPage> {
               currentPage = current;
             },
             children: <Widget>[
-              BottomNavPage(() {
-                _pageController.animateToPage(0,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn);
-              }, widget.id, widget.name, widget.image, widget.email),
+              BottomNavPage(widget.id, widget.name, widget.image, widget.email),
             ],
           ),
         ),

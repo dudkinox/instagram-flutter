@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instagream/features/post/post_create_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/PostService.dart';
-import '../home/home_page.dart';
-import 'location_selector_widget.dart';
-import 'post_create_view_model.dart';
+import '../bottom_nav/bottom_nav_page.dart';
 import 'write_caption_widget.dart';
 
 class SettingPostPage extends StatefulWidget {
@@ -33,7 +32,6 @@ class SettingPostPage extends StatefulWidget {
 class _SettingPostPageState extends State<SettingPostPage> {
   static const TAG = 'SettingPostPage';
   TextEditingController controller = TextEditingController();
-  String caption = "";
   late File file;
   bool isFile = false;
   @override
@@ -55,16 +53,12 @@ class _SettingPostPageState extends State<SettingPostPage> {
               actions: [
                 FlatButton(
                     onPressed: () async {
-                      await PostService(widget.id, file, "hello");
+                      await PostService(widget.id, file, controller.text);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(
-                            id: widget.id,
-                            name: widget.name,
-                            image: widget.image,
-                            email: widget.email,
-                          ),
+                          builder: (context) => BottomNavPage(widget.id,
+                              widget.name, widget.image, widget.email),
                         ),
                       );
                     },
