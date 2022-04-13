@@ -44,14 +44,16 @@ class _PostPageState extends State<PostPage> {
           FlatButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SettingPostPage(
-                              id: widget.id,
-                              name: widget.name,
-                              image: widget.image,
-                              email: widget.email,
-                            )));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingPostPage(
+                      id: widget.id,
+                      name: widget.name,
+                      image: widget.image,
+                      email: widget.email,
+                    ),
+                  ),
+                );
               },
               child: Text(
                 'Next',

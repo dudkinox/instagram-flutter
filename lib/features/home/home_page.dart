@@ -7,13 +7,12 @@ import 'header_widget.dart';
 class HomePage extends StatefulWidget {
   static const ROUTE_NAME = 'HomePage';
 
-  final VoidCallback onCameraClick;
   final String id;
   final String name;
   final String image;
   final String email;
 
-  const HomePage(this.onCameraClick,
+  const HomePage(
       {Key? key,
       required this.id,
       required this.name,
@@ -30,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HeaderWidget(widget.onCameraClick),
+      appBar: HeaderWidget(),
       body: RefreshIndicator(
           child: SingleChildScrollView(
             child: Column(

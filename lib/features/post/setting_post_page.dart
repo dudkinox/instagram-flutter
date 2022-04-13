@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../services/PostService.dart';
+import '../home/home_page.dart';
 import 'location_selector_widget.dart';
 import 'post_create_view_model.dart';
 import 'write_caption_widget.dart';
@@ -8,13 +13,13 @@ import 'write_caption_widget.dart';
 class SettingPostPage extends StatefulWidget {
   static const ROUTE_NAME = 'SettingPostPage';
 
-  const SettingPostPage(
-      {Key? key,
-      required this.id,
-      required this.name,
-      required this.image,
-      required this.email})
-      : super(key: key);
+  const SettingPostPage({
+    Key? key,
+    required this.id,
+    required this.name,
+    required this.image,
+    required this.email,
+  }) : super(key: key);
 
   final String id;
   final String name;
@@ -27,6 +32,10 @@ class SettingPostPage extends StatefulWidget {
 
 class _SettingPostPageState extends State<SettingPostPage> {
   static const TAG = 'SettingPostPage';
+  TextEditingController controller = TextEditingController();
+  String caption = "";
+  late File file;
+  bool isFile = false;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -45,101 +54,89 @@ class _SettingPostPageState extends State<SettingPostPage> {
               title: const Text('New Post'),
               actions: [
                 FlatButton(
-                    onPressed: () {
-                      Navigator.popUntil(context, (route) => route.isFirst);
+                    onPressed: () async {
+                      await PostService(widget.id, file, "hello");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(
+                            id: widget.id,
+                            name: widget.name,
+                            image: widget.image,
+                            email: widget.email,
+                          ),
+                        ),
+                      );
                     },
                     child: Text(
-                      'Share',
+                      'Post',
                       style: Theme.of(context)
                           .primaryTextTheme
                           .subtitle1
-                          ?.copyWith(color: Colors.blue),
+                          ?.copyWith(color: Colors.white),
                     ))
               ],
             ),
             body: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   WriteCaptionWidget(
                     id: widget.id,
                     name: widget.name,
                     image: widget.image,
                     email: widget.email,
+                    controller: controller,
                   ),
                   const Divider(
                     height: 1,
                   ),
-                  const ListTile(
-                    title: Text('Tag People'),
-                    dense: true,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      child: const Text('Gallery'),
+                      onTap: () async {
+                        var image = await ImagePicker().getImage(
+                          source: ImageSource.gallery,
+                        );
+                        setState(() {
+                          file = File(image!.path);
+                          isFile = true;
+                        });
+                      },
+                    ),
                   ),
                   const Divider(
                     height: 1,
                   ),
-                  if (context.watch<PostCreateViewModel>().currentLocation ==
-                      null)
-                    const ListTile(
-                      title: Text('Add Location'),
-                      dense: true,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      child: const Text('Camera'),
+                      onTap: () async {
+                        var image = await ImagePicker().getImage(
+                          source: ImageSource.camera,
+                        );
+                        setState(() {
+                          file = File(image!.path);
+                          isFile = true;
+                        });
+                      },
                     ),
-                  if (context.watch<PostCreateViewModel>().currentLocation !=
-                      null)
-                    ColorFiltered(
-                      colorFilter: ColorFilter.mode(
-                          Theme.of(context).toggleableActiveColor,
-                          BlendMode.srcATop),
-                      child: ListTile(
-                        title: Text(
-                            '${context.watch<PostCreateViewModel>().currentLocation}'),
-                        leading: const Icon(Icons.pin_drop),
-                        trailing: IconButton(
-                            icon: const Icon(Icons.close),
-                            onPressed: () {
-                              context
-                                  .read<PostCreateViewModel>()
-                                  .setCurrentLocation(null);
-                            }),
-                        dense: true,
-                      ),
-                    ),
+                  ),
                   const Divider(
                     height: 1,
                   ),
-                  if (context.watch<PostCreateViewModel>().currentLocation ==
-                      null)
-                    LocationSelectorWidget(),
-                  if (context.watch<PostCreateViewModel>().currentLocation ==
-                      null)
-                    const Divider(
-                      height: 1,
-                    ),
-                  SwitchListTile(
-                    value: context.watch<PostCreateViewModel>().isShareFacebook,
-                    onChanged: (value) {
-                      context
-                          .read<PostCreateViewModel>()
-                          .enableSocialShare(SocialShare.FACEBOOK, value);
-                    },
-                    title: const Text('Facebook'),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  SwitchListTile(
-                    value: context.watch<PostCreateViewModel>().isShareTwitter,
-                    onChanged: (value) {
-                      context
-                          .read<PostCreateViewModel>()
-                          .enableSocialShare(SocialShare.TWITTER, value);
-                    },
-                    title: const Text('Twitter'),
-                  ),
-                  SwitchListTile(
-                    value: context.watch<PostCreateViewModel>().isShareTumblr,
-                    onChanged: (value) {
-                      context
-                          .read<PostCreateViewModel>()
-                          .enableSocialShare(SocialShare.TUMBLR, value);
-                    },
-                    title: const Text('Tumblr'),
-                  ),
+                  isFile
+                      ? Image.file(
+                          file,
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height / 2,
+                        )
+                      : Container(),
                 ],
               ),
             ),

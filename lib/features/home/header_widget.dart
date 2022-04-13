@@ -7,9 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../res/icons_app.dart';
 
 class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
-  final VoidCallback onCameraClick;
-
-  HeaderWidget(this.onCameraClick, {Key? key}) : super(key: key);
+  HeaderWidget({Key? key}) : super(key: key);
 
   Future openBrowserURL({required String url, bool inApp = false}) async {
     if (await canLaunch(url)) {

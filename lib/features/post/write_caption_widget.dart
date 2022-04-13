@@ -8,13 +8,15 @@ class WriteCaptionWidget extends StatefulWidget {
       required this.id,
       required this.name,
       required this.image,
-      required this.email})
+      required this.email,
+      required this.controller})
       : super(key: key);
 
   final String id;
   final String name;
   final String image;
   final String email;
+  final TextEditingController controller;
 
   @override
   _WriteCaptionWidgetState createState() => _WriteCaptionWidgetState();
@@ -22,6 +24,7 @@ class WriteCaptionWidget extends StatefulWidget {
 
 class _WriteCaptionWidgetState extends State<WriteCaptionWidget> {
   static const TAG = 'WriteCaptionWidget';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,6 +38,7 @@ class _WriteCaptionWidgetState extends State<WriteCaptionWidget> {
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
+              controller: widget.controller,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Write a caption',
