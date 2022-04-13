@@ -8,16 +8,16 @@ class ActivityItemWidget extends StatelessWidget {
         color: Theme.of(context).cardColor,
         child: InkWell(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
             child: Row(
               children: <Widget>[
-                CircleAvatar(
+                const CircleAvatar(
                     maxRadius: 16,
-                    backgroundImage:
-                        AssetImage('assets/sample/ic_avatar_1.jpg')),
+                    backgroundImage: NetworkImage(
+                        'http://titansteel.co.th/lasercutting/wp-content/uploads/layerslider/LayerSlider-5-responsive-demo-slider/bg.jpg')),
                 Expanded(
                     child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: RichText(
                             text: TextSpan(children: [
                           TextSpan(

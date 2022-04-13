@@ -38,7 +38,7 @@ class HeaderWidget extends StatelessWidget {
                     child: Text(name),
                   ),
                   Text(
-                    'Ha Noi, Viet Nam',
+                    'post time',
                     style: Theme.of(context).textTheme.caption,
                   )
                 ],
