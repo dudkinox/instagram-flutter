@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import '../../features/comment/comment_page.dart';
 
 class InfoWidget extends StatelessWidget {
+  const InfoWidget({Key? key, required this.name, required this.caption})
+      : super(key: key);
+
+  final String name;
+  final String caption;
+
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_function_declarations_over_variables
     final onOpenComment = () {
       Navigator.pushNamed(context, CommentPage.ROUTE_NAME, arguments: '112034');
     };
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,17 +33,16 @@ class InfoWidget extends StatelessWidget {
               )),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: 8,
             ),
             child: RichText(
               text: TextSpan(children: [
                 TextSpan(
-                    text: 'dangngocduc',
+                    text: 'by ' + name,
                     style: Theme.of(context).textTheme.bodyText2),
                 TextSpan(
-                    text:
-                        '  how to rear mount pec dec instal slideshow. Note: the hite-rite v1 dropper post makes for a great linkage point for extra strap when overloading 🚚 :: fabs chest pre order june 1st :::..',
+                    text: '  ' + caption,
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1
@@ -51,7 +56,7 @@ class InfoWidget extends StatelessWidget {
                 'View all 4 comment',
                 style: Theme.of(context).textTheme.caption,
               ),
-              padding: EdgeInsets.symmetric(vertical: 4),
+              padding: const EdgeInsets.symmetric(vertical: 4),
             ),
             onTap: onOpenComment,
           )

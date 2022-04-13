@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 import '../models/FeedModel.dart';
 
-Future<FeedModel> GetAllFeedService(String id) async {
+Future<List<FeedModel>> GetAllFeedService() async {
   final String url = Host + "/api/feed/all";
   final response = await http.get(
     Uri.parse(url),
@@ -15,6 +15,10 @@ Future<FeedModel> GetAllFeedService(String id) async {
       'Content-Type': 'application/json; charset=UTF-8',
     },
   );
-
-  return FeedModel.fromJson(jsonDecode(response.body));
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+    return jsonResponse.map((data) => FeedModel.fromJson(data)).toList();
+  } else {
+    throw Exception('Failed to load feeds');
+  }
 }

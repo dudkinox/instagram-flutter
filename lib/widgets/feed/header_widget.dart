@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget(
@@ -17,7 +16,7 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: 4,
         horizontal: 16,
       ).copyWith(right: 0),
@@ -26,7 +25,7 @@ class HeaderWidget extends StatelessWidget {
           CircleAvatar(radius: 16, backgroundImage: NetworkImage(image)),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 8,
               ),
               child: Column(
@@ -53,7 +52,7 @@ class HeaderWidget extends StatelessWidget {
                 builder: (context) {
                   return Dialog(
                     child: ListView(
-                        padding: EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shrinkWrap: true,
                         children: [
                           'Report...',
@@ -64,7 +63,7 @@ class HeaderWidget extends StatelessWidget {
                         ]
                             .map((e) => InkWell(
                                   child: Container(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 12, horizontal: 16),
                                     child: Text(e),
                                   ),
@@ -77,7 +76,7 @@ class HeaderWidget extends StatelessWidget {
                 },
               );
             },
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
           )
         ],
       ),

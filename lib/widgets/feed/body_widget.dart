@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 class BodyWidget extends StatelessWidget {
+  const BodyWidget({Key? key, required this.image}) : super(key: key);
+
+  final String image;
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1,
-      child: Image.asset(
-        'assets/sample/search_demo1.jpg',
+      child: Image.network(
+        image,
         fit: BoxFit.cover,
       ),
     );

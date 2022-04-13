@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
+import '../../models/FeedModel.dart';
+import '../../services/FeedService.dart';
 import 'body_widget.dart';
+import 'feedState.dart';
 import 'footer_widget.dart';
 import 'header_widget.dart';
 import 'info_widget.dart';
@@ -23,19 +26,34 @@ class FeedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Theme.of(context).cardColor,
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border(top: Divider.createBorderSide(context))),
-        padding: EdgeInsets.only(bottom: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            HeaderWidget(id: id, name: name, image: image, email: email),
-            BodyWidget(),
-            FooterWidget(),
-            InfoWidget()
-          ],
-        ),
+      child: FutureBuilder<List<FeedModel>>(
+        future: GetAllFeedService(),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            var res = snapshot.data;
+
+            List<Widget> FeedArray = [];
+            for (var i = 0; i < res.length; i++) {
+              FeedArray.add(FeedState(
+                id: res[i].id,
+                name: res[i].name,
+                image: res[i].image,
+                email: res[i].email,
+              ));
+            }
+
+            return Container(
+              decoration: BoxDecoration(
+                  border: Border(top: Divider.createBorderSide(context))),
+              padding: const EdgeInsets.only(bottom: 8),
+              child: FeedState(id: id, name: name, image: image, email: email),
+            );
+          } else {
+            return const Center(
+              child: LinearProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }

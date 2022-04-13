@@ -11,20 +11,28 @@ String feedModelToJson(FeedModel data) => json.encode(data.toJson());
 class FeedModel {
   FeedModel({
     required this.id,
+    required this.name,
+    required this.email,
     required this.list,
   });
 
   String id;
+  String name;
+  String email;
   List<ListElement> list;
 
   factory FeedModel.fromJson(Map<String, dynamic> json) => FeedModel(
         id: json["id"],
+        name: json["name"],
+        email: json["email"],
         list: List<ListElement>.from(
             json["list"].map((x) => ListElement.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
+        "name": name,
+        "email": email,
         "list": List<dynamic>.from(list.map((x) => x.toJson())),
       };
 }

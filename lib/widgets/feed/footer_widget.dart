@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:developer' as developer;
 
 import '../../res/icons_app.dart';
 
 class FooterWidget extends StatelessWidget {
+  const FooterWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
