@@ -148,32 +148,34 @@ class _SearchState extends State<Search> {
                       email: email,
                       me: false)));
         },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                      radius: 16, backgroundImage: NetworkImage(image)),
-                  const SizedBox(width: 8),
-                  Text(
-                    name,
-                    style: const TextStyle(color: Colors.black, fontSize: 16),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                        radius: 16, backgroundImage: NetworkImage(image)),
+                    const SizedBox(width: 8),
+                    Text(
+                      name,
+                      style: const TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              height: 1,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.grey.withOpacity(0.2),
-              margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-            ),
-          ],
+              Container(
+                height: 1,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.grey.withOpacity(0.2),
+                margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              ),
+            ],
+          ),
         ),
       ),
     );
