@@ -13,18 +13,21 @@ class FeedModel {
     required this.id,
     required this.name,
     required this.email,
+    required this.image,
     required this.list,
   });
 
   String id;
   String name;
   String email;
+  String image;
   List<ListElement> list;
 
   factory FeedModel.fromJson(Map<String, dynamic> json) => FeedModel(
         id: json["id"],
         name: json["name"],
         email: json["email"],
+        image: json["image"],
         list: List<ListElement>.from(
             json["list"].map((x) => ListElement.fromJson(x))),
       );
@@ -33,6 +36,7 @@ class FeedModel {
         "id": id,
         "name": name,
         "email": email,
+        "image": image,
         "list": List<dynamic>.from(list.map((x) => x.toJson())),
       };
 }
