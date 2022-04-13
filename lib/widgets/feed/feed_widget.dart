@@ -45,7 +45,7 @@ class FeedWidget extends StatelessWidget {
                         item[j].createTime +
                         " น."));
                 feedChildren.add(BodyWidget(image: item[j].image));
-                feedChildren.add(FooterWidget());
+                feedChildren.add(FooterWidget(image: item[j].image));
                 feedChildren.add(InfoWidget(
                     name: res[i].name,
                     caption: item[j].caption,
