@@ -22,6 +22,10 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   TextEditingController controller = TextEditingController();
+  List<String> nameList = [];
+  List<String> imageList = [];
+  List<String> idList = [];
+  List<String> emailList = [];
   List<String> searchResults = [];
   List<String> searchResultsImage = [];
   List<String> searchResultsID = [];
@@ -32,6 +36,12 @@ class _SearchState extends State<Search> {
   @override
   void initState() {
     super.initState();
+    for (int i = 0; i < widget.name.length; i++) {
+      nameList.add(widget.name[i]);
+      imageList.add(widget.image[i]);
+      idList.add(widget.id[i]);
+      emailList.add(widget.email[i]);
+    }
   }
 
   void searchName(String searchText) {
@@ -100,63 +110,72 @@ class _SearchState extends State<Search> {
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                for (int i = 0; i < searchResults.length; i++)
-                  getName(context, searchResultsID[i], searchResults[i],
-                      searchResultsImage[i], searchResultsEmail[i]),
-
-                // getName(context, searchResults[i]),
-              ],
-            )
+              children: isSearching
+                  ? [
+                      for (int i = 0; i < searchResults.length; i++)
+                        getName(context, searchResultsID[i], searchResults[i],
+                            searchResultsImage[i], searchResultsEmail[i])
+                    ]
+                  : [
+                      for (int i = 0; i < nameList.length; i++)
+                        getName(context, idList[i], nameList[i], imageList[i],
+                            emailList[i])
+                    ])
           : Center(
               child: LoadingCircle(),
             ),
     );
   }
 
-  Widget getName(BuildContext context, String id, String name, String image,
-      String email) {
-    return controller.text.isNotEmpty || controller.text != ""
-        ? Visibility(
-            visible: isSearching,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AccountPage(
-                            id: id, name: name, image: image, email: email, me: false)));
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+  Widget getName(
+    BuildContext context,
+    String id,
+    String name,
+    String image,
+    String email,
+  ) {
+    return Visibility(
+      visible: true,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AccountPage(
+                      id: id,
+                      name: name,
+                      image: image,
+                      email: email,
+                      me: false)));
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+              child: Row(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                            radius: 16, backgroundImage: NetworkImage(image)),
-                        const SizedBox(width: 8),
-                        Text(
-                          name,
-                          style: const TextStyle(
-                              color: Colors.black, fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 0.5,
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.grey.withOpacity(0.3),
-                    margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  CircleAvatar(
+                      radius: 16, backgroundImage: NetworkImage(image)),
+                  const SizedBox(width: 8),
+                  Text(
+                    name,
+                    style: const TextStyle(color: Colors.black, fontSize: 16),
                   ),
                 ],
               ),
             ),
-          )
-        : Container();
+            Container(
+              height: 1,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.grey.withOpacity(0.2),
+              margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
