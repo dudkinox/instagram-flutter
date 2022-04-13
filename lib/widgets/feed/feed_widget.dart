@@ -46,8 +46,10 @@ class FeedWidget extends StatelessWidget {
                         " น."));
                 feedChildren.add(BodyWidget(image: item[j].image));
                 feedChildren.add(FooterWidget());
-                feedChildren.add(
-                    InfoWidget(name: res[i].name, caption: item[j].caption));
+                feedChildren.add(InfoWidget(
+                    name: res[i].name,
+                    caption: item[j].caption,
+                    countLike: item[j].countLike.toString()));
               }
             }
 

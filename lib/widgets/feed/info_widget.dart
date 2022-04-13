@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import '../../features/comment/comment_page.dart';
 
 class InfoWidget extends StatelessWidget {
-  const InfoWidget({Key? key, required this.name, required this.caption})
+  const InfoWidget(
+      {Key? key,
+      required this.name,
+      required this.caption,
+      required this.countLike})
       : super(key: key);
 
   final String name;
   final String caption;
+  final String countLike;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class InfoWidget extends StatelessWidget {
                   .subtitle2!
                   .copyWith(fontWeight: FontWeight.w800),
               child: Text(
-                '1,102 likes',
+                countLike + ' likes',
                 style: Theme.of(context).textTheme.bodyText2,
               )),
           Container(
