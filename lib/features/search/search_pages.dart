@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagream/features/search/search.dart';
 import 'package:provider/provider.dart';
-import 'dart:developer' as developer;
 
 import 'package:tuple/tuple.dart';
 
 import '../../data/bloc/local_media_bloc.dart';
 import '../../res/icons_app.dart';
+import '../../services/AccountService.dart';
 import '../../widgets/chip_widget.dart';
 import '../explore/explore_page.dart';
 
@@ -33,6 +34,28 @@ class SearchPages extends StatefulWidget {
 
 class _SearchPagesState extends State<SearchPages> {
   static const TAG = 'SearchPages';
+  List<String> name = [];
+  List<String> image = [];
+  List<String> id = [];
+  List<String> email = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getNameFromApi();
+  }
+
+  Future<void> getNameFromApi() async {
+    var res = await GetAllAccounts();
+    for (int i = 0; i < res.length; i++) {
+      setState(() {
+        name.add(res[i].name);
+        image.add(res[i].image);
+        id.add(res[i].id);
+        email.add(res[i].email);
+      });
+    }
+  }
 
   List<Tuple2<String, String>> categories = [
     Tuple2(IconsApp.icShop, 'Shop'),
@@ -47,14 +70,19 @@ class _SearchPagesState extends State<SearchPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.search),
-        title: Text('Search'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.leak_add),
-            onPressed: () {},
-          )
-        ],
+        leading: const Icon(Icons.search, color: Colors.white),
+        title: TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Search(
+                          name: name, image: image, id: id, email: email)));
+            },
+            child: const Text(
+              'Search',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            )),
         bottom: PreferredSize(
             child: Container(
               height: 48,

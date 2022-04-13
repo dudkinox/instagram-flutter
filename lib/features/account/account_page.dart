@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instagream/app_context.dart';
-import 'dart:developer' as developer;
 
 import '../../widgets/bottomsheet/bottom_sheet_action.dart';
 import 'app_bar_account.dart';
@@ -13,13 +12,15 @@ class AccountPage extends StatefulWidget {
   final String name;
   final String image;
   final String email;
+  final bool me;
 
   const AccountPage(
       {Key? key,
       required this.id,
       required this.name,
       required this.image,
-      required this.email})
+      required this.email,
+      required this.me})
       : super(key: key);
   @override
   _AccountPageState createState() => _AccountPageState();
@@ -53,10 +54,14 @@ class _AccountPageState extends State<AccountPage> {
                     id: widget.id,
                     name: widget.name,
                     image: widget.image,
-                    email: widget.email),
+                    email: widget.email,
+                    me: widget.me),
                 SliverToBoxAdapter(
                   child: HeaderAccountWidget(
-                      id: widget.id, name: widget.name, image: widget.image),
+                      id: widget.id,
+                      name: widget.name,
+                      image: widget.image,
+                      me: widget.me),
                 ),
                 SliverPersistentHeader(
                   pinned: true,

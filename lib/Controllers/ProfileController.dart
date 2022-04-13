@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 import '../features/account/account_page.dart';
@@ -14,8 +12,8 @@ Future<void> UpdateProfileAccount(BuildContext context, String id, String email,
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) =>
-                AccountPage(id: id, name: name, image: image, email: email)));
+            builder: (context) => AccountPage(
+                id: id, name: name, image: image, email: email, me: true)));
   } else {
     showDialog(
       context: context,
