@@ -8,6 +8,20 @@ import 'setting_post_page.dart';
 
 class PostPage extends StatefulWidget {
   static const ROUTE_NAME = 'PostPage';
+
+  const PostPage(
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
+      : super(key: key);
+
+  final String id;
+  final String name;
+  final String image;
+  final String email;
+
   @override
   _PostPageState createState() => _PostPageState();
 }
@@ -29,8 +43,15 @@ class _PostPageState extends State<PostPage> {
         actions: [
           FlatButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingPostPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SettingPostPage(
+                              id: widget.id,
+                              name: widget.name,
+                              image: widget.image,
+                              email: widget.email,
+                            )));
               },
               child: Text(
                 'Next',

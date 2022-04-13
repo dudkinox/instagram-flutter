@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'dart:developer' as developer;
-
-import '../../data/bloc/auth_bloc.dart';
 
 class WriteCaptionWidget extends StatefulWidget {
   static const ROUTE_NAME = 'WriteCaptionWidget';
+
+  const WriteCaptionWidget(
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
+      : super(key: key);
+
+  final String id;
+  final String name;
+  final String image;
+  final String email;
+
   @override
   _WriteCaptionWidgetState createState() => _WriteCaptionWidgetState();
 }
@@ -15,16 +25,15 @@ class _WriteCaptionWidgetState extends State<WriteCaptionWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       child: Row(
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage(
-                context.watch<AuthBloc>().user!.asValue!.value!.avatar),
+            backgroundImage: NetworkImage(widget.image),
           ),
           Expanded(
               child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
               decoration: InputDecoration(
                   border: InputBorder.none,

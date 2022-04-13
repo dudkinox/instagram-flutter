@@ -115,8 +115,13 @@ class _BottomNavPageState extends State<BottomNavPage> {
                 Expanded(
                     child: BottomNavigationItem(
                         tabsIcons[2], 2 == _currentTabIndex, onPress: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => PostPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PostPage(
+                            id: widget.id,
+                            name: widget.name,
+                            image: widget.image,
+                            email: widget.email,
+                          )));
                 })),
                 Expanded(
                     child: BottomNavigationItem(

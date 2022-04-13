@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
-
 import 'package:provider/provider.dart';
 
 import 'location_selector_widget.dart';
@@ -9,6 +7,20 @@ import 'write_caption_widget.dart';
 
 class SettingPostPage extends StatefulWidget {
   static const ROUTE_NAME = 'SettingPostPage';
+
+  const SettingPostPage(
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.email})
+      : super(key: key);
+
+  final String id;
+  final String name;
+  final String image;
+  final String email;
+
   @override
   _SettingPostPageState createState() => _SettingPostPageState();
 }
@@ -30,7 +42,7 @@ class _SettingPostPageState extends State<SettingPostPage> {
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('New Post'),
+              title: const Text('New Post'),
               actions: [
                 FlatButton(
                     onPressed: () {
@@ -48,20 +60,25 @@ class _SettingPostPageState extends State<SettingPostPage> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  WriteCaptionWidget(),
-                  Divider(
+                  WriteCaptionWidget(
+                    id: widget.id,
+                    name: widget.name,
+                    image: widget.image,
+                    email: widget.email,
+                  ),
+                  const Divider(
                     height: 1,
                   ),
-                  ListTile(
+                  const ListTile(
                     title: Text('Tag People'),
                     dense: true,
                   ),
-                  Divider(
+                  const Divider(
                     height: 1,
                   ),
                   if (context.watch<PostCreateViewModel>().currentLocation ==
                       null)
-                    ListTile(
+                    const ListTile(
                       title: Text('Add Location'),
                       dense: true,
                     ),
@@ -74,9 +91,9 @@ class _SettingPostPageState extends State<SettingPostPage> {
                       child: ListTile(
                         title: Text(
                             '${context.watch<PostCreateViewModel>().currentLocation}'),
-                        leading: Icon(Icons.pin_drop),
+                        leading: const Icon(Icons.pin_drop),
                         trailing: IconButton(
-                            icon: Icon(Icons.close),
+                            icon: const Icon(Icons.close),
                             onPressed: () {
                               context
                                   .read<PostCreateViewModel>()
@@ -85,7 +102,7 @@ class _SettingPostPageState extends State<SettingPostPage> {
                         dense: true,
                       ),
                     ),
-                  Divider(
+                  const Divider(
                     height: 1,
                   ),
                   if (context.watch<PostCreateViewModel>().currentLocation ==
@@ -93,7 +110,7 @@ class _SettingPostPageState extends State<SettingPostPage> {
                     LocationSelectorWidget(),
                   if (context.watch<PostCreateViewModel>().currentLocation ==
                       null)
-                    Divider(
+                    const Divider(
                       height: 1,
                     ),
                   SwitchListTile(
@@ -103,7 +120,7 @@ class _SettingPostPageState extends State<SettingPostPage> {
                           .read<PostCreateViewModel>()
                           .enableSocialShare(SocialShare.FACEBOOK, value);
                     },
-                    title: Text('Facebook'),
+                    title: const Text('Facebook'),
                   ),
                   SwitchListTile(
                     value: context.watch<PostCreateViewModel>().isShareTwitter,
@@ -112,7 +129,7 @@ class _SettingPostPageState extends State<SettingPostPage> {
                           .read<PostCreateViewModel>()
                           .enableSocialShare(SocialShare.TWITTER, value);
                     },
-                    title: Text('Twitter'),
+                    title: const Text('Twitter'),
                   ),
                   SwitchListTile(
                     value: context.watch<PostCreateViewModel>().isShareTumblr,
@@ -121,7 +138,7 @@ class _SettingPostPageState extends State<SettingPostPage> {
                           .read<PostCreateViewModel>()
                           .enableSocialShare(SocialShare.TUMBLR, value);
                     },
-                    title: Text('Tumblr'),
+                    title: const Text('Tumblr'),
                   ),
                 ],
               ),
