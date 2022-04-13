@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import '../edit_profile/edit_profile.dart';
 import 'big_avatar_user_widget.dart';
@@ -10,9 +9,14 @@ class HeaderAccountWidget extends StatefulWidget {
   final String id;
   final String name;
   final String image;
+  final bool me;
 
   const HeaderAccountWidget(
-      {Key? key, required this.id, required this.name, required this.image})
+      {Key? key,
+      required this.id,
+      required this.name,
+      required this.image,
+      required this.me})
       : super(key: key);
   @override
   _HeaderAccountWidgetState createState() => _HeaderAccountWidgetState();
@@ -74,25 +78,27 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
               horizontal: 16,
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-            width: double.infinity,
-            child: OutlineButton(
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4))),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EditProfile(id: widget.id),
-                    ));
-              },
-              child: Text(
-                'Edit Profile',
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-            ),
-          )
+          widget.me
+              ? Container(
+                  padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                  width: double.infinity,
+                  child: OutlineButton(
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4))),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfile(id: widget.id),
+                          ));
+                    },
+                    child: Text(
+                      'Edit Profile',
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                  ),
+                )
+              : Container()
         ],
       ),
     );

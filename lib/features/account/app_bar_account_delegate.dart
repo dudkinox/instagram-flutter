@@ -8,9 +8,10 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   final String name;
   final String image;
   final String email;
+  final bool me;
 
   AppBarAccountDelegate(
-      this.topPadding, this.id, this.name, this.image, this.email);
+      this.topPadding, this.id, this.name, this.image, this.email, this.me);
 
   @override
   Widget build(
@@ -27,6 +28,17 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
               child: Row(
                 children: <Widget>[
+                  !me
+                      ? IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back_ios,
+                            size: 16,
+                          ),
+                          onPressed: () => {
+                            Navigator.of(context).pop(),
+                          },
+                        )
+                      : Container(),
                   Text(
                     email,
                     style: Theme.of(context).primaryTextTheme.subtitle2,
@@ -34,15 +46,17 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
                 ],
               ),
             ),
-            IconButton(
-              icon: const Icon(Icons.logout_outlined),
-              onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Application()))
-              },
-            )
+            me
+                ? IconButton(
+                    icon: const Icon(Icons.logout_outlined),
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Application()))
+                    },
+                  )
+                : Container()
           ],
         ),
       ),

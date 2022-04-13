@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagream/features/search/search.dart';
 import 'package:provider/provider.dart';
-import 'dart:developer' as developer;
 
 import 'package:tuple/tuple.dart';
 
@@ -36,6 +35,9 @@ class SearchPages extends StatefulWidget {
 class _SearchPagesState extends State<SearchPages> {
   static const TAG = 'SearchPages';
   List<String> name = [];
+  List<String> image = [];
+  List<String> id = [];
+  List<String> email = [];
 
   @override
   void initState() {
@@ -48,9 +50,11 @@ class _SearchPagesState extends State<SearchPages> {
     for (int i = 0; i < res.length; i++) {
       setState(() {
         name.add(res[i].name);
+        image.add(res[i].image);
+        id.add(res[i].id);
+        email.add(res[i].email);
       });
     }
-    print(name);
   }
 
   List<Tuple2<String, String>> categories = [
@@ -69,8 +73,11 @@ class _SearchPagesState extends State<SearchPages> {
         leading: const Icon(Icons.search, color: Colors.white),
         title: TextButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Search(name: name)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Search(
+                          name: name, image: image, id: id, email: email)));
             },
             child: const Text(
               'Search',

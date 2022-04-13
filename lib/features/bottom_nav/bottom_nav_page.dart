@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:tuple/tuple.dart';
 import 'dart:developer' as developer;
 
@@ -78,10 +77,12 @@ class _BottomNavPageState extends State<BottomNavPage> {
               email: widget.email),
           ActivityPage(),
           AccountPage(
-              id: widget.id,
-              name: widget.name,
-              image: widget.image,
-              email: widget.email),
+            id: widget.id,
+            name: widget.name,
+            image: widget.image,
+            email: widget.email,
+            me: true,
+          ),
         ],
       ),
       bottomNavigationBar: Material(
