@@ -4,7 +4,6 @@ import 'dart:developer' as developer;
 import '../../models/FeedModel.dart';
 import '../../services/FeedService.dart';
 import 'body_widget.dart';
-import 'feedState.dart';
 import 'footer_widget.dart';
 import 'header_widget.dart';
 import 'info_widget.dart';
@@ -32,21 +31,32 @@ class FeedWidget extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.done) {
             var res = snapshot.data;
 
-            List<Widget> FeedArray = [];
+            final feedChildren = <Widget>[];
             for (var i = 0; i < res.length; i++) {
-              FeedArray.add(FeedState(
-                id: res[i].id,
-                name: res[i].name,
-                image: res[i].image,
-                email: res[i].email,
-              ));
+              final item = res[i].list;
+              for (var j = 0; j < item.length; j++) {
+                feedChildren.add(HeaderWidget(
+                    id: res[i].id,
+                    name: res[i].name,
+                    image: res[i].image,
+                    email: res[i].email,
+                    createAt: item[j].createAt +
+                        " เวลา: " +
+                        item[j].createTime +
+                        " น."));
+                feedChildren.add(BodyWidget(image: item[j].image));
+                feedChildren.add(FooterWidget());
+                feedChildren.add(
+                    InfoWidget(name: res[i].name, caption: item[j].caption));
+              }
             }
 
             return Container(
               decoration: BoxDecoration(
                   border: Border(top: Divider.createBorderSide(context))),
               padding: const EdgeInsets.only(bottom: 8),
-              child: FeedState(id: id, name: name, image: image, email: email),
+              child: Column(
+                  mainAxisSize: MainAxisSize.min, children: feedChildren),
             );
           } else {
             return const Center(

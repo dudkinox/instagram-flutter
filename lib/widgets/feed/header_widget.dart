@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget(
-      {Key? key,
-      required this.id,
-      required this.name,
-      required this.image,
-      required this.email})
-      : super(key: key);
+  const HeaderWidget({
+    Key? key,
+    required this.id,
+    required this.name,
+    required this.image,
+    required this.email,
+    required this.createAt,
+  }) : super(key: key);
   final String id;
   final String name;
   final String image;
   final String email;
+  final String createAt;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class HeaderWidget extends StatelessWidget {
                     child: Text(name),
                   ),
                   Text(
-                    'post time',
+                    createAt,
                     style: Theme.of(context).textTheme.caption,
                   )
                 ],
