@@ -27,40 +27,40 @@ class PostModel {
 
 class ListElement {
   ListElement({
-    required this.caption,
-    required this.countComment,
     required this.countLike,
-    required this.createTime,
-    required this.createAt,
     required this.image,
+    required this.caption,
+    required this.createAt,
+    required this.countComment,
+    required this.createTime,
     required this.postNo,
   });
 
-  String caption;
-  int countComment;
   int countLike;
-  String createTime;
-  String createAt;
   String image;
+  String caption;
+  String createAt;
+  int countComment;
+  String createTime;
   int postNo;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
-        caption: json["caption"],
-        countComment: json["countComment"],
         countLike: json["countLike"],
-        createTime: json["createTime"],
-        createAt: json["createAt"],
         image: json["image"],
+        caption: json["caption"],
+        createAt: json["createAt"],
+        countComment: json["countComment"],
+        createTime: json["createTime"],
         postNo: json["postNo"],
       );
 
   Map<String, dynamic> toJson() => {
-        "caption": caption,
-        "countComment": countComment,
         "countLike": countLike,
-        "createTime": createTime,
-        "createAt": createAt,
         "image": image,
+        "caption": caption,
+        "createAt": createAt,
+        "countComment": countComment,
+        "createTime": createTime,
         "postNo": postNo,
       };
 }

@@ -10,13 +10,15 @@ class HeaderAccountWidget extends StatefulWidget {
   final String name;
   final String image;
   final bool me;
+  final int countPost;
 
   const HeaderAccountWidget(
       {Key? key,
       required this.id,
       required this.name,
       required this.image,
-      required this.me})
+      required this.me,
+      required this.countPost})
       : super(key: key);
   @override
   _HeaderAccountWidgetState createState() => _HeaderAccountWidgetState();
@@ -63,7 +65,7 @@ class _HeaderAccountWidgetState extends State<HeaderAccountWidget> {
                     children: <Widget>[
                       Expanded(
                           child: MenuItemWidget(
-                        title: '146',
+                        title: widget.countPost.toString(),
                         content: 'Post',
                       ))
                     ],
