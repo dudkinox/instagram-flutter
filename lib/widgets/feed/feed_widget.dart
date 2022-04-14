@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import '../../models/FeedModel.dart';
 import '../../services/FeedService.dart';
@@ -9,13 +8,13 @@ import 'header_widget.dart';
 import 'info_widget.dart';
 
 class FeedWidget extends StatelessWidget {
-  const FeedWidget(
-      {Key? key,
-      required this.id,
-      required this.name,
-      required this.image,
-      required this.email})
-      : super(key: key);
+  const FeedWidget({
+    Key? key,
+    required this.id,
+    required this.name,
+    required this.image,
+    required this.email,
+  }) : super(key: key);
   final String id;
   final String name;
   final String image;
@@ -45,9 +44,11 @@ class FeedWidget extends StatelessWidget {
                         item[j].createTime +
                         " น."));
                 feedChildren.add(BodyWidget(image: item[j].image));
-                feedChildren.add(FooterWidget(image: item[j].image));
-                feedChildren.add(InfoWidget(
+                feedChildren.add(FooterWidget(
+                    id: res[i].id,
+                    image: item[j].image,
                     name: res[i].name,
+                    postNo: item[j].postNo,
                     caption: item[j].caption,
                     countLike: item[j].countLike.toString()));
               }

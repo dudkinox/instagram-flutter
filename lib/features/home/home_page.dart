@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import '../../widgets/feed/feed_widget.dart';
 import 'header_widget.dart';
@@ -33,17 +32,13 @@ class _HomePageState extends State<HomePage> {
       body: RefreshIndicator(
           child: SingleChildScrollView(
             child: Column(
-              children: <Widget>[
+              children: [
                 FeedWidget(
-                    id: widget.id,
-                    name: widget.name,
-                    image: widget.image,
-                    email: widget.email),
-                FeedWidget(
-                    id: widget.id,
-                    name: widget.name,
-                    image: widget.image,
-                    email: widget.email),
+                  id: widget.id,
+                  name: widget.name,
+                  image: widget.image,
+                  email: widget.email,
+                ),
               ],
             ),
           ),
