@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 import '../../services/LikeService.dart';
 
 class FooterWidget extends StatefulWidget {
-  const FooterWidget({
+  FooterWidget({
     Key? key,
     required this.id,
     required this.image,
@@ -20,6 +20,7 @@ class FooterWidget extends StatefulWidget {
     required this.postNo,
     required this.caption,
     required this.countLike,
+    required this.like,
   }) : super(key: key);
   final String id;
   final String image;
@@ -27,6 +28,7 @@ class FooterWidget extends StatefulWidget {
   final int postNo;
   final String caption;
   final String countLike;
+  bool like;
 
   @override
   State<FooterWidget> createState() => _FooterWidgetState();
@@ -34,26 +36,29 @@ class FooterWidget extends StatefulWidget {
 
 class _FooterWidgetState extends State<FooterWidget> {
   static const TAG = 'FooterWidget';
-  bool isLike = false;
   int count = 0;
+  bool isPressed = false;
 
   void setIsLike() async {
     setState(() {
-      isLike = !isLike;
+      widget.like = !widget.like;
+      isPressed = !isPressed;
     });
     var data =
         await LikeImage(widget.id, widget.name, widget.image, widget.postNo);
-    print(data);
   }
 
   String countToString() {
-    count = int.parse(widget.countLike) + 1;
-    return count.toString();
+    if (isPressed && widget.like) {
+      return (int.parse(widget.countLike) + 1).toString();
+    } else if (isPressed && !widget.like) {
+      return (int.parse(widget.countLike) - 1).toString();
+    }
+    return widget.countLike;
   }
 
   @override
   Widget build(BuildContext context) {
-    print("isLike: " + isLike.toString());
     final onOpenComment = () {
       Navigator.pushNamed(context, CommentPage.ROUTE_NAME, arguments: '112034');
     };
@@ -63,7 +68,7 @@ class _FooterWidgetState extends State<FooterWidget> {
           Row(
             children: <Widget>[
               IconButton(
-                  icon: isLike
+                  icon: widget.like
                       ? SvgPicture.asset(
                           IconsApp.icFavoriteSelected,
                           color: Theme.of(context).colorScheme.onPrimary,
@@ -109,7 +114,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                         .subtitle2!
                         .copyWith(fontWeight: FontWeight.w800),
                     child: Text(
-                      isLike
+                      isPressed || widget.like || !widget.like
                           ? countToString() + ' likes'
                           : widget.countLike + ' likes',
                       style: Theme.of(context).textTheme.bodyText2,

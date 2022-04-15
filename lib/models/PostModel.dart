@@ -4,63 +4,85 @@
 
 import 'dart:convert';
 
-PostModel postModelFromJson(String str) => PostModel.fromJson(json.decode(str));
+List<PostModel> postModelFromJson(String str) =>
+    List<PostModel>.from(json.decode(str).map((x) => PostModel.fromJson(x)));
 
-String postModelToJson(PostModel data) => json.encode(data.toJson());
+String postModelToJson(List<PostModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class PostModel {
   PostModel({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.image,
     required this.list,
   });
 
+  String id;
+  String name;
+  String email;
+  String image;
   List<ListElement> list;
 
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        image: json["image"],
         list: List<ListElement>.from(
             json["list"].map((x) => ListElement.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "email": email,
+        "image": image,
         "list": List<dynamic>.from(list.map((x) => x.toJson())),
       };
 }
 
 class ListElement {
   ListElement({
-    required this.countLike,
+    required this.postNo,
     required this.image,
     required this.caption,
     required this.createAt,
-    required this.countComment,
     required this.createTime,
-    required this.postNo,
+    required this.countComment,
+    required this.countLike,
+    required this.like,
   });
 
-  int countLike;
+  int postNo;
   String image;
   String caption;
   String createAt;
-  int countComment;
   String createTime;
-  int postNo;
+  int countComment;
+  int countLike;
+  bool like;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
-        countLike: json["countLike"],
+        postNo: json["postNo"],
         image: json["image"],
         caption: json["caption"],
         createAt: json["createAt"],
-        countComment: json["countComment"],
         createTime: json["createTime"],
-        postNo: json["postNo"],
+        countComment: json["countComment"],
+        countLike: json["countLike"],
+        like: json["like"],
       );
 
   Map<String, dynamic> toJson() => {
-        "countLike": countLike,
+        "postNo": postNo,
         "image": image,
         "caption": caption,
         "createAt": createAt,
-        "countComment": countComment,
         "createTime": createTime,
-        "postNo": postNo,
+        "countComment": countComment,
+        "countLike": countLike,
+        "like": like,
       };
 }

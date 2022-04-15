@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../models/FeedModel.dart';
+import '../../models/PostModel.dart';
 import '../../services/FeedService.dart';
 import 'body_widget.dart';
 import 'footer_widget.dart';
 import 'header_widget.dart';
-import 'info_widget.dart';
 
 class FeedWidget extends StatelessWidget {
   const FeedWidget({
@@ -24,12 +23,11 @@ class FeedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Theme.of(context).cardColor,
-      child: FutureBuilder<List<FeedModel>>(
-        future: GetAllFeedService(),
+      child: FutureBuilder<List<PostModel>>(
+        future: GetAllFeedService(id),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             var res = snapshot.data;
-
             final feedChildren = <Widget>[];
             for (var i = 0; i < res.length; i++) {
               final item = res[i].list;
@@ -45,12 +43,14 @@ class FeedWidget extends StatelessWidget {
                         " น."));
                 feedChildren.add(BodyWidget(image: item[j].image));
                 feedChildren.add(FooterWidget(
-                    id: res[i].id,
-                    image: item[j].image,
-                    name: res[i].name,
-                    postNo: item[j].postNo,
-                    caption: item[j].caption,
-                    countLike: item[j].countLike.toString()));
+                  id: res[i].id,
+                  image: item[j].image,
+                  name: name,
+                  postNo: item[j].postNo,
+                  caption: item[j].caption,
+                  countLike: item[j].countLike.toString(),
+                  like: item[j].like,
+                ));
               }
             }
 
