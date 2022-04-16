@@ -1,12 +1,14 @@
 // To parse this JSON data, do
 //
-//     final feedModel = feedModelFromJson(jsonString);
+//     final postModel = postModelFromJson(jsonString);
 
 import 'dart:convert';
 
-FeedModel feedModelFromJson(String str) => FeedModel.fromJson(json.decode(str));
+List<FeedModel> postModelFromJson(String str) =>
+    List<FeedModel>.from(json.decode(str).map((x) => FeedModel.fromJson(x)));
 
-String feedModelToJson(FeedModel data) => json.encode(data.toJson());
+String feedModelToJson(List<FeedModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class FeedModel {
   FeedModel({
@@ -43,40 +45,44 @@ class FeedModel {
 
 class ListElement {
   ListElement({
-    required this.caption,
-    required this.createTime,
     required this.postNo,
-    required this.createAt,
-    required this.countComment,
     required this.image,
+    required this.caption,
+    required this.createAt,
+    required this.createTime,
+    required this.countComment,
     required this.countLike,
+    required this.like,
   });
 
-  String caption;
-  String createTime;
   int postNo;
-  String createAt;
-  int countComment;
   String image;
+  String caption;
+  String createAt;
+  String createTime;
+  int countComment;
   int countLike;
+  bool like;
 
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
-        caption: json["caption"],
-        createTime: json["createTime"],
         postNo: json["postNo"],
-        createAt: json["createAt"],
-        countComment: json["countComment"],
         image: json["image"],
+        caption: json["caption"],
+        createAt: json["createAt"],
+        createTime: json["createTime"],
+        countComment: json["countComment"],
         countLike: json["countLike"],
+        like: json["like"],
       );
 
   Map<String, dynamic> toJson() => {
-        "caption": caption,
-        "createTime": createTime,
         "postNo": postNo,
-        "createAt": createAt,
-        "countComment": countComment,
         "image": image,
+        "caption": caption,
+        "createAt": createAt,
+        "createTime": createTime,
+        "countComment": countComment,
         "countLike": countLike,
+        "like": like,
       };
 }

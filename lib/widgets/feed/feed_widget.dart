@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/PostModel.dart';
+import '../../models/FeedModel.dart';
 import '../../services/FeedService.dart';
 import 'body_widget.dart';
 import 'footer_widget.dart';
@@ -23,7 +23,7 @@ class FeedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Theme.of(context).cardColor,
-      child: FutureBuilder<List<PostModel>>(
+      child: FutureBuilder<List<FeedModel>>(
         future: GetAllFeedService(id),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
