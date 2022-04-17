@@ -43,7 +43,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       SvgPicture.asset(
                         'assets/icons/icons8-image-file.svg',
-                        height: 150,
+                        height: 100,
                       ),
                       Flexible(
                         child: Container(),
