@@ -8,6 +8,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../res/icons_app.dart';
 import 'package:http/http.dart' as http;
 
+import '../../services/CommentService.dart';
 import '../../services/LikeService.dart';
 
 class FooterWidget extends StatefulWidget {
@@ -192,7 +193,13 @@ class _FooterWidgetState extends State<FooterWidget> {
                               margin: const EdgeInsets.only(left: 8),
                               width: MediaQuery.of(context).size.width * 0.2,
                               child: ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
+                                  await AddCommentService(
+                                      widget.id,
+                                      widget.image,
+                                      widget.name,
+                                      controller.text,
+                                      widget.postNo);
                                   setState(() {
                                     listComments.add(
                                       {
