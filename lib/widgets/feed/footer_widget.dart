@@ -41,6 +41,7 @@ class _FooterWidgetState extends State<FooterWidget> {
   bool isShowComment = false;
   bool isComment = false;
   Map<String, String> comment = {};
+  List<Map<String, String>> listComments = [];
 
   void setIsLike() async {
     setState(() {
@@ -164,9 +165,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (int i = 0; i < comment.length; i++)
-                          getComment(comment.keys.elementAt(i),
-                              comment.values.elementAt(i)),
+                        for (int i = 0; i < listComments.length; i++)
+                          getComment(listComments[i]['name'] ?? "",
+                              listComments[i]['comment'] ?? ""),
                         Row(
                           children: [
                             Container(
@@ -193,15 +194,13 @@ class _FooterWidgetState extends State<FooterWidget> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   setState(() {
-                                    comment
-                                        .addAll({"Newiihuhu": controller.text});
+                                    listComments.add(
+                                      {
+                                        'comment': controller.text,
+                                        'name': widget.name,
+                                      },
+                                    );
                                     isComment = true;
-                                    print(comment);
-                                    for (int i = 0; i < comment.length; i++) {
-                                      print(comment.keys.elementAt(i));
-                                      print(comment.values.elementAt(i));
-                                    }
-
                                     controller.clear();
                                   });
                                 },
