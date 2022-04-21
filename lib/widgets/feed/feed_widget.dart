@@ -45,7 +45,8 @@ class FeedWidget extends StatelessWidget {
                 feedChildren.add(FooterWidget(
                   id: res[i].id,
                   image: item[j].image,
-                  name: name,
+                  name: res[i].name,
+                  account_name: name,
                   postNo: item[j].postNo,
                   caption: item[j].caption,
                   countLike: item[j].countLike.toString(),

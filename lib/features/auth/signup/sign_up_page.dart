@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../Controllers/SignUpController.dart';
+import '../../../components/Loading.dart';
 import '../signin/sign_in_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -104,6 +105,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
+                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                        return "Please enter a valid email address";
+                      }
                       return null;
                     },
                   ),
@@ -177,11 +181,13 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     onTap: () {
                       RegisterController(
-                          _emailController.text,
-                          _passwordController.text,
-                          _nameController.text,
-                          file,
-                          _formKey);
+                        _emailController.text,
+                        _passwordController.text,
+                        _nameController.text,
+                        file,
+                        _formKey,
+                        context,
+                      );
                     },
                   ),
                   Container(

@@ -17,6 +17,7 @@ class FooterWidget extends StatefulWidget {
     required this.id,
     required this.image,
     required this.name,
+    required this.account_name,
     required this.postNo,
     required this.caption,
     required this.countLike,
@@ -25,6 +26,7 @@ class FooterWidget extends StatefulWidget {
   final String id;
   final String image;
   final String name;
+  final String account_name;
   final int postNo;
   final String caption;
   final String countLike;
@@ -194,22 +196,24 @@ class _FooterWidgetState extends State<FooterWidget> {
                               width: MediaQuery.of(context).size.width * 0.2,
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  await AddCommentService(
-                                      widget.id,
-                                      widget.image,
-                                      widget.name,
-                                      controller.text,
-                                      widget.postNo);
-                                  setState(() {
-                                    listComments.add(
-                                      {
-                                        'comment': controller.text,
-                                        'name': widget.name,
-                                      },
-                                    );
-                                    isComment = true;
-                                    controller.clear();
-                                  });
+                                  if (controller.text.isNotEmpty) {
+                                    await AddCommentService(
+                                        widget.id,
+                                        widget.image,
+                                        widget.account_name,
+                                        controller.text,
+                                        widget.postNo);
+                                    setState(() {
+                                      listComments.add(
+                                        {
+                                          'comment': controller.text,
+                                          'name': widget.account_name,
+                                        },
+                                      );
+                                      isComment = true;
+                                      controller.clear();
+                                    });
+                                  }
                                 },
                                 child: const Text('Post',
                                     style: TextStyle(color: Colors.white)),
