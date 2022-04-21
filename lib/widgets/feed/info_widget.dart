@@ -57,6 +57,10 @@ class InfoWidget extends StatelessWidget {
           ),
           InkWell(
             child: Container(
+              child: Text(
+                'View all 4 comment',
+                style: Theme.of(context).textTheme.caption,
+              ),
               padding: const EdgeInsets.symmetric(vertical: 4),
             ),
             onTap: onOpenComment,

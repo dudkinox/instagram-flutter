@@ -122,6 +122,14 @@ class _BottomNavPageState extends State<BottomNavPage> {
                 })),
                 Expanded(
                     child: BottomNavigationItem(
+                        tabsIcons[3], 3 == _currentTabIndex, onPress: () {
+                  setState(() {
+                    _currentTabIndex = 3;
+                    _pageController.jumpToPage(2);
+                  });
+                })),
+                Expanded(
+                    child: BottomNavigationItem(
                         tabsIcons[4], 4 == _currentTabIndex, onPress: () {
                   setState(() {
                     _currentTabIndex = 4;
