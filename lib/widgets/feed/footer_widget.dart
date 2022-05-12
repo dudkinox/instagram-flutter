@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../features/comment/comment.dart';
+import '../../models/CommentModel.dart';
 import '../../res/icons_app.dart';
 import 'package:http/http.dart' as http;
 
@@ -153,7 +155,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                   child: InkWell(
                     child: Container(
                       child: Text(
-                        'View all 4 comment',
+                        'View all comment',
                         style: Theme.of(context).textTheme.caption,
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -168,6 +170,18 @@ class _FooterWidgetState extends State<FooterWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        FutureBuilder<CommentModel>(
+                          future: getCommentByIDService(widget.id),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState !=
+                                ConnectionState.done) {
+                              return Container();
+                            } else {
+                              var resComment = snapshot.data;
+                              return CommentOnPost(resComment: resComment!);
+                            }
+                          },
+                        ),
                         for (int i = 0; i < listComments.length; i++)
                           getComment(listComments[i]['name'] ?? "",
                               listComments[i]['comment'] ?? ""),

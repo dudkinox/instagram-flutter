@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import '../database/client.dart';
+import '../models/CommentModel.dart';
 
 Future<dynamic> AddCommentService(
     String id, String image, String name, String comment, int postNo) async {
@@ -25,4 +26,15 @@ Future<dynamic> AddCommentService(
   } catch (e) {
     print(e);
   }
+}
+
+Future<CommentModel> getCommentByIDService(String token) async {
+  final String url = Host + "/api/comment/" + token;
+  final response = await http.get(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  return CommentModel.fromJson(jsonDecode(response.body));
 }
