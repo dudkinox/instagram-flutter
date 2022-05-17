@@ -105,9 +105,9 @@ class _SignInPageState extends State<SignInPage> {
                                     BorderRadius.all(Radius.circular(4)),
                               ),
                               gradient: LinearGradient(colors: [
-                                Color(0xFF405de6),
-                                Color(0xFF833ab4),
-                                Color(0xFFe1306c),
+                                Color.fromARGB(255, 180, 38, 38),
+                                Color.fromARGB(255, 180, 38, 38),
+                                Color.fromARGB(255, 180, 38, 38)
                               ])),
                         ),
                         onTap: () {
