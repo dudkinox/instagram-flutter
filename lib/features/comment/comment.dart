@@ -19,13 +19,13 @@ class CommentOnPost extends StatelessWidget {
           return Container(
             child: Row(
               children: [
-                Container(
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(comment.image),
-                  ),
-                  width: 40,
-                  height: 40,
-                ),
+                // Container(
+                //   child: CircleAvatar(
+                //     backgroundImage: NetworkImage(comment.image),
+                //   ),
+                //   width: 40,
+                //   height: 40,
+                // ),
                 Container(
                   padding: const EdgeInsets.only(
                     left: 8,
